@@ -1,0 +1,2833 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福建春节民俗文化答题</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <!-- 统一的 Tailwind 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D32F2F',
+                        secondary: '#FFD700',
+                        accent: '#1976D2',
+                        success: '#388E3C',
+                        neutral: {
+                            100: '#F5F5F5',
+                            200: '#EEEEEE',
+                            300: '#E0E0E0',
+                            400: '#BDBDBD',
+                            500: '#9E9E9E',
+                            600: '#757575',
+                            700: '#616161',
+                            800: '#424242',
+                            900: '#212121',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Noto Serif SC', 'serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-in': 'slideIn 0.5s ease-in-out',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    },
+                    backgroundImage: {
+                        'pattern': "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d32f2f' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .text-shadow-lg {
+                text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            }
+            .card-flip {
+                perspective: 1000px;
+            }
+            .card-inner {
+                transition: transform 0.6s;
+                transform-style: preserve-3d;
+            }
+            .card-flip:hover .card-inner {
+                transform: rotateY(180deg);
+            }
+            .card-front, .card-back {
+                backface-visibility: hidden;
+            }
+            .card-back {
+                transform: rotateY(180deg);
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .bg-gradient-primary {
+                background: linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%);
+            }
+            .bg-gradient-secondary {
+                background: linear-gradient(135deg, #FFD700 0%, #FFA000 100%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-neutral-100 bg-pattern min-h-screen font-sans">
+    <!-- 顶部导航栏 -->
+    <nav class="bg-gradient-primary text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-pagelines text-secondary text-2xl"></i>
+                <h1 class="text-xl md:text-2xl font-bold font-serif">福建春节民俗文化</h1>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="nav-link active font-medium hover:text-secondary transition-colors duration-300 flex items-center">
+                    <i class="fa fa-home mr-1"></i> 首页
+                </a>
+                <a href="#knowledge" class="nav-link font-medium hover:text-secondary transition-colors duration-300 flex items-center">
+                    <i class="fa fa-book mr-1"></i> 知识库
+                </a>
+                <a href="#quiz" class="nav-link font-medium hover:text-secondary transition-colors duration-300 flex items-center">
+                    <i class="fa fa-question-circle mr-1"></i> 答题
+                </a>
+                <a href="#achievements" class="nav-link font-medium hover:text-secondary transition-colors duration-300 flex items-center">
+                    <i class="fa fa-trophy mr-1"></i> 成就
+                </a>
+                <button id="share-button" class="font-medium hover:text-secondary transition-colors duration-300 flex items-center focus:outline-none">
+                    <i class="fa fa-share-alt mr-1"></i> 分享
+                </button>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="md:hidden hidden bg-primary">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
+                <a href="#home" class="mobile-nav-link py-2 px-4 hover:bg-red-800 rounded-md flex items-center">
+                    <i class="fa fa-home mr-2"></i> 首页
+                </a>
+                <a href="#knowledge" class="mobile-nav-link py-2 px-4 hover:bg-red-800 rounded-md flex items-center">
+                    <i class="fa fa-book mr-2"></i> 知识库
+                </a>
+                <a href="#quiz" class="mobile-nav-link py-2 px-4 hover:bg-red-800 rounded-md flex items-center">
+                    <i class="fa fa-question-circle mr-2"></i> 答题
+                </a>
+                <a href="#achievements" class="mobile-nav-link py-2 px-4 hover:bg-red-800 rounded-md flex items-center">
+                    <i class="fa fa-trophy mr-2"></i> 成就
+                </a>
+                <button id="mobile-share-button" class="py-2 px-4 hover:bg-red-800 rounded-md flex items-center text-white focus:outline-none">
+                    <i class="fa fa-share-alt mr-2"></i> 分享
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 首页 -->
+        <section id="home" class="page-section active">
+            <!-- 欢迎横幅 -->
+            <div class="relative rounded-xl overflow-hidden shadow-xl mb-8 animate-fade-in">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-accent/80 z-10"></div>
+                <img src="https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1729551908250583042~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=%2F0AoiQ7TuPVF9SVZ87CcAXpNsro%3D" alt="福建春节" class="w-full h-64 md:h-96 object-cover">
+                <div class="absolute inset-0 z-20 flex flex-col justify-center items-center text-center text-white p-4">
+                    <h2 class="text-3xl md:text-5xl font-bold font-serif mb-4 text-shadow-lg animate-float">福建春节民俗文化</h2>
+                    <p class="text-lg md:text-xl max-w-2xl text-shadow mb-6">探索八闽大地独特的春节传统，感受山海之间的文化魅力</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#knowledge" class="bg-secondary hover:bg-yellow-500 text-neutral-900 font-bold py-2 px-6 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 nav-link">
+                            <i class="fa fa-book mr-2"></i> 开始学习
+                        </a>
+                        <a href="#quiz" class="bg-white hover:bg-neutral-200 text-primary font-bold py-2 px-6 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 nav-link">
+                            <i class="fa fa-play-circle mr-2"></i> 开始答题
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 特色内容 -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold font-serif mb-6 text-center text-neutral-800">福建春节特色民俗</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- 特色1 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                        <img src="https://p26-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/2205116611591012361~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=qYtuw%2B8rs9TPgDAshV1uAa%2BG8aI%3D" alt="福建游神" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-primary mb-2">福建游神</h4>
+                            <p class="text-neutral-700">福建游神是一项历史悠久的民俗活动，每年春节期间，各地都会举行盛大的游神仪式，村民们抬着神像巡游，祈求平安和丰收。</p>
+                            <a href="#knowledge" class="mt-4 inline-block text-accent hover:text-blue-700 font-medium">
+                                了解更多 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 特色2 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                        <img src="https://p3-doubao-search-sign.byteimg.com/labis/1b88e8133316b1c3ae6f8497e9d15cda~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=y7DumIURlgJfkvDDJghuQh0fO%2Fo%3D" alt="福建花灯" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-primary mb-2">福建花灯</h4>
+                            <p class="text-neutral-700">福建花灯历史悠久，以泉州花灯最为著名。元宵节期间，各地都会举办灯会，展示各种精美的花灯，营造喜庆的节日氛围。</p>
+                            <a href="#knowledge" class="mt-4 inline-block text-accent hover:text-blue-700 font-medium">
+                                了解更多 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 特色3 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                        <img src="https://p3-doubao-search-sign.byteimg.com/pgc-image/aedaed5753b14b1390ed13710d022f2a~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=6505KohgWau2W6tZb0r9u8mR4IA%3D" alt="福建春节美食" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-primary mb-2">春节美食</h4>
+                            <p class="text-neutral-700">福建春节美食丰富多样，福州鱼丸、厦门同安封肉、莆田红团等各具特色，每道美食都蕴含着吉祥的寓意和深厚的文化底蕴。</p>
+                            <a href="#knowledge" class="mt-4 inline-block text-accent hover:text-blue-700 font-medium">
+                                了解更多 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 数据统计 -->
+            <div class="bg-white rounded-xl shadow-lg p-6 mb-12">
+                <h3 class="text-2xl font-bold font-serif mb-6 text-center text-neutral-800">探索福建春节文化</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="stat-item">
+                        <div class="text-4xl font-bold text-primary mb-2" id="stats-cultures">0</div>
+                        <p class="text-neutral-600">民俗文化</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="text-4xl font-bold text-accent mb-2" id="stats-quizzes">0</div>
+                        <p class="text-neutral-600">趣味问答</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="text-4xl font-bold text-success mb-2" id="stats-users">0</div>
+                        <p class="text-neutral-600">参与用户</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="text-4xl font-bold text-secondary mb-2" id="stats-achievements">0</div>
+                        <p class="text-neutral-600">成就徽章</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 用户评价 -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold font-serif mb-6 text-center text-neutral-800">用户评价</h3>
+                <div class="testimonial-slider overflow-hidden relative">
+                    <div class="testimonial-track flex transition-transform duration-500" id="testimonial-track">
+                        <!-- 评价1 -->
+                        <div class="testimonial-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                            <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-secondary">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="text-neutral-700 mb-4">"这个应用让我深入了解了福建春节的独特民俗文化，答题环节设计得很有趣，孩子也很喜欢！"</p>
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-neutral-300 flex items-center justify-center">
+                                        <i class="fa fa-user text-neutral-600"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h5 class="font-bold text-neutral-800">张女士</h5>
+                                        <p class="text-sm text-neutral-500">教师</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 评价2 -->
+                        <div class="testimonial-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                            <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-secondary">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                    </div>
+                                </div>
+                                <p class="text-neutral-700 mb-4">"作为福建人，我对家乡的春节习俗有了新的认识。应用中的图片和解说非常详细，很有教育意义。"</p>
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-neutral-300 flex items-center justify-center">
+                                        <i class="fa fa-user text-neutral-600"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h5 class="font-bold text-neutral-800">李先生</h5>
+                                        <p class="text-sm text-neutral-500">工程师</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 评价3 -->
+                        <div class="testimonial-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                            <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-secondary">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                </div>
+                                <p class="text-neutral-700 mb-4">"成就系统设计得很有趣，激励我不断学习和答题。希望能增加更多地区的民俗文化内容。"</p>
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-neutral-300 flex items-center justify-center">
+                                        <i class="fa fa-user text-neutral-600"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h5 class="font-bold text-neutral-800">王同学</h5>
+                                        <p class="text-sm text-neutral-500">大学生</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 轮播控制按钮 -->
+                    <button class="testimonial-prev absolute top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md z-10 focus:outline-none">
+                        <i class="fa fa-chevron-left text-primary"></i>
+                    </button>
+                    <button class="testimonial-next absolute top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md z-10 focus:outline-none">
+                        <i class="fa fa-chevron-right text-primary"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 知识库页面 -->
+        <section id="knowledge" class="page-section hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold font-serif mb-2 text-center text-neutral-800">福建春节民俗知识库</h2>
+                <p class="text-center text-neutral-600 mb-6">探索八闽大地丰富多彩的春节传统习俗</p>
+                
+                <!-- 搜索和筛选 -->
+                <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-grow">
+                            <div class="relative">
+                                <input type="text" id="knowledge-search" placeholder="搜索民俗文化..." class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <i class="fa fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400"></i>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <select id="knowledge-category" class="px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                                <option value="all">所有分类</option>
+                                <option value="ritual">祭祀习俗</option>
+                                <option value="food">饮食文化</option>
+                                <option value="activity">民俗活动</option>
+                                <option value="art">民间艺术</option>
+                            </select>
+                            <select id="knowledge-region" class="px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                                <option value="all">所有地区</option>
+                                <option value="fuzhou">福州</option>
+                                <option value="minnan">闽南</option>
+                                <option value="minxi">闽西</option>
+                                <option value="putian">莆田</option>
+                                <option value="ningde">宁德</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 民俗文化卡片 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="knowledge-cards">
+                    <!-- 卡片将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 答题页面 -->
+        <section id="quiz" class="page-section hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold font-serif mb-2 text-center text-neutral-800">福建春节民俗答题</h2>
+                <p class="text-center text-neutral-600 mb-6">测试你对福建春节民俗文化的了解</p>
+                
+                <!-- 答题模式选择 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <!-- 快速答题 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 cursor-pointer quiz-mode-card" data-mode="quick">
+                        <div class="h-40 bg-gradient-primary flex items-center justify-center">
+                            <i class="fa fa-bolt text-white text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-neutral-800 mb-2">快速答题</h3>
+                            <p class="text-neutral-600 mb-4">随机10道题目，快速测试你的知识水平</p>
+                            <button class="w-full bg-primary hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300">
+                                开始答题
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 专题答题 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 cursor-pointer quiz-mode-card" data-mode="topic">
+                        <div class="h-40 bg-gradient-secondary flex items-center justify-center">
+                            <i class="fa fa-list-alt text-neutral-900 text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-neutral-800 mb-2">专题答题</h3>
+                            <p class="text-neutral-600 mb-4">选择特定主题，深入测试某方面的知识</p>
+                            <button class="w-full bg-secondary hover:bg-yellow-500 text-neutral-900 font-medium py-2 px-4 rounded-lg transition-colors duration-300">
+                                选择专题
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 挑战模式 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 cursor-pointer quiz-mode-card" data-mode="challenge">
+                        <div class="h-40 bg-gradient-to-br from-accent to-purple-600 flex items-center justify-center">
+                            <i class="fa fa-trophy text-white text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-neutral-800 mb-2">挑战模式</h3>
+                            <p class="text-neutral-600 mb-4">连续答题，答错即结束，挑战你的极限</p>
+                            <button class="w-full bg-accent hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300">
+                                开始挑战
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 答题区域 -->
+                <div id="quiz-container" class="hidden">
+                    <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                        <!-- 答题进度 -->
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-neutral-700 font-medium">进度: <span id="quiz-progress">0/10</span></span>
+                                <span class="text-neutral-700 font-medium">得分: <span id="quiz-score">0</span></span>
+                            </div>
+                            <div class="w-full bg-neutral-200 rounded-full h-2.5">
+                                <div id="quiz-progress-bar" class="bg-primary h-2.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 题目区域 -->
+                        <div id="quiz-question-container" class="mb-6">
+                            <h3 id="quiz-question" class="text-xl font-bold text-neutral-800 mb-4">题目将在这里显示</h3>
+                            
+                            <!-- 选项区域 -->
+                            <div id="quiz-options" class="space-y-3">
+                                <!-- 选项将通过JavaScript动态生成 -->
+                            </div>
+                        </div>
+                        
+                        <!-- 答题反馈 -->
+                        <div id="quiz-feedback" class="hidden mb-6 p-4 rounded-lg">
+                            <!-- 反馈内容将通过JavaScript动态生成 -->
+                        </div>
+                        
+                        <!-- 操作按钮 -->
+                        <div class="flex justify-between">
+                            <button id="quiz-prev" class="bg-neutral-200 hover:bg-neutral-300 text-neutral-800 font-medium py-2 px-4 rounded-lg transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                                <i class="fa fa-arrow-left mr-1"></i> 上一题
+                            </button>
+                            <button id="quiz-next" class="bg-primary hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300">
+                                下一题 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 专题选择 -->
+                <div id="topic-selection" class="hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- 专题将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                
+                <!-- 答题结果 -->
+                <div id="quiz-result" class="hidden bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold text-neutral-800 mb-4 text-center">答题结果</h3>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-neutral-700 font-medium">得分</span>
+                            <span id="result-score" class="text-2xl font-bold text-primary">0</span>
+                        </div>
+                        <div class="w-full bg-neutral-200 rounded-full h-4">
+                            <div id="result-score-bar" class="bg-primary h-4 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-neutral-100 rounded-lg p-4 text-center">
+                            <p class="text-neutral-600 mb-1">总题数</p>
+                            <p id="result-total" class="text-xl font-bold text-neutral-800">0</p>
+                        </div>
+                        <div class="bg-neutral-100 rounded-lg p-4 text-center">
+                            <p class="text-neutral-600 mb-1">正确题数</p>
+                            <p id="result-correct" class="text-xl font-bold text-success">0</p>
+                        </div>
+                        <div class="bg-neutral-100 rounded-lg p-4 text-center">
+                            <p class="text-neutral-600 mb-1">错误题数</p>
+                            <p id="result-wrong" class="text-xl font-bold text-primary">0</p>
+                        </div>
+                        <div class="bg-neutral-100 rounded-lg p-4 text-center">
+                            <p class="text-neutral-600 mb-1">正确率</p>
+                            <p id="result-accuracy" class="text-xl font-bold text-accent">0%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-lg font-bold text-neutral-800 mb-2">答题分析</h4>
+                        <p id="result-analysis" class="text-neutral-700">分析内容将在这里显示</p>
+                    </div>
+                    
+                    <div class="flex justify-center space-x-4">
+                        <button id="result-retry" class="bg-primary hover:bg-red-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-300">
+                            <i class="fa fa-refresh mr-1"></i> 重新答题
+                        </button>
+                        <button id="result-home" class="bg-neutral-200 hover:bg-neutral-300 text-neutral-800 font-medium py-2 px-6 rounded-lg transition-colors duration-300">
+                            <i class="fa fa-home mr-1"></i> 返回首页
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 成就页面 -->
+        <section id="achievements" class="page-section hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold font-serif mb-2 text-center text-neutral-800">我的成就</h2>
+                <p class="text-center text-neutral-600 mb-6">查看你的学习进度和获得的成就</p>
+                
+                <!-- 个人进度 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                    <h3 class="text-xl font-bold text-neutral-800 mb-4">学习进度</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- 知识学习进度 -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-neutral-700 font-medium">知识学习</span>
+                                <span id="progress-culture-text" class="text-neutral-700 font-medium">0/0</span>
+                            </div>
+                            <div class="w-full bg-neutral-200 rounded-full h-2.5">
+                                <div id="progress-culture-bar" class="bg-primary h-2.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 答题进度 -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-neutral-700 font-medium">答题数量</span>
+                                <span id="progress-quiz-text" class="text-neutral-700 font-medium">0/0</span>
+                            </div>
+                            <div class="w-full bg-neutral-200 rounded-full h-2.5">
+                                <div id="progress-quiz-bar" class="bg-accent h-2.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 统计图表 -->
+                    <div class="h-64">
+                        <canvas id="progress-chart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- 成就徽章 -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold text-neutral-800 mb-4">成就徽章</h3>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="achievement-badges">
+                        <!-- 成就徽章将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                
+                <!-- 最近活动 -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-neutral-800 mb-4">最近活动</h3>
+                    
+                    <div class="space-y-4" id="recent-activities">
+                        <!-- 活动记录将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-neutral-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-pagelines text-secondary mr-2"></i> 福建春节民俗文化
+                    </h3>
+                    <p class="text-neutral-400 mb-4">探索八闽大地独特的春节传统，感受山海之间的文化魅力</p>
+                    <div class="flex space-x-4">
+                        <button id="footer-share-weixin" class="text-neutral-400 hover:text-white transition-colors duration-300 focus:outline-none" title="微信分享">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </button>
+                        <button id="footer-share-weibo" class="text-neutral-400 hover:text-white transition-colors duration-300 focus:outline-none" title="微博分享">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </button>
+                        <button id="footer-share-qq" class="text-neutral-400 hover:text-white transition-colors duration-300 focus:outline-none" title="QQ分享">
+                            <i class="fa fa-qq text-xl"></i>
+                        </button>
+                        <button id="footer-share-link" class="text-neutral-400 hover:text-white transition-colors duration-300 focus:outline-none" title="复制链接">
+                            <i class="fa fa-link text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-neutral-400 hover:text-white transition-colors duration-300">首页</a></li>
+                        <li><a href="#knowledge" class="text-neutral-400 hover:text-white transition-colors duration-300">知识库</a></li>
+                        <li><a href="#quiz" class="text-neutral-400 hover:text-white transition-colors duration-300">答题</a></li>
+                        <li><a href="#achievements" class="text-neutral-400 hover:text-white transition-colors duration-300">成就</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-neutral-400">
+                            <i class="fa fa-envelope mr-2"></i> 2957195563@qq.com
+                        </li>
+                        <li class="flex items-center text-neutral-400">
+                            <i class="fa fa-phone mr-2"></i> 15985715069
+                        </li>
+                        <li class="flex items-center text-neutral-400">
+                            <i class="fa fa-map-marker mr-2"></i> 福建省福州市
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-neutral-700 mt-8 pt-6 text-center text-neutral-500">
+                <p>&copy; 寻春承韵团队 .保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 专题选择模态框 -->
+    <div id="topic-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl shadow-xl p-6 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-neutral-800">选择专题</h3>
+                <button id="topic-modal-close" class="text-neutral-500 hover:text-neutral-800 focus:outline-none">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-3 mb-6">
+                <!-- 专题选项将通过JavaScript动态生成 -->
+            </div>
+            
+            <div class="flex justify-end">
+                <button id="topic-modal-cancel" class="bg-neutral-200 hover:bg-neutral-300 text-neutral-800 font-medium py-2 px-4 rounded-lg transition-colors duration-300 mr-2">
+                    取消
+                </button>
+                <button id="topic-modal-confirm" class="bg-primary hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300">
+                    开始答题
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 成就解锁提示 -->
+    <div id="achievement-toast" class="fixed bottom-4 right-4 bg-white rounded-lg shadow-lg p-4 transform translate-y-full opacity-0 transition-all duration-500 z-50 max-w-xs">
+        <div class="flex items-start">
+            <div class="bg-secondary rounded-full p-2 mr-3">
+                <i class="fa fa-trophy text-neutral-900 text-xl"></i>
+            </div>
+            <div class="flex-grow">
+                <h4 class="font-bold text-neutral-800">成就解锁！</h4>
+                <p id="achievement-toast-name" class="text-neutral-600">成就名称</p>
+            </div>
+            <button id="achievement-toast-close" class="text-neutral-400 hover:text-neutral-600 focus:outline-none">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 数据
+        const folkCultureData = [
+            {
+                id: "fujian_spring_festival_001",
+                title: "福州祭灶",
+                category: "ritual",
+                region: "fuzhou",
+                description: "福州祭灶遵循'官三民四船五'的古制，官家廿三祭灶、百姓廿四祭灶、疍民廿五祭灶。家家户户摆上灶糖、清茶，用甜糯黏住灶神的嘴，祈求'上天言好事，回宫降吉祥'。",
+                imageUrl: "https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1729551976930869255~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=gJPJN5aDwpc8zWJc67ZI07HPmzE%3D",
+                relatedQuizIds: ["quiz_001", "quiz_002"],
+                difficulty: 1
+            },
+            {
+                id: "fujian_spring_festival_002",
+                title: "福建游神",
+                category: "activity",
+                region: "all",
+                description: "福建游神是一项历史悠久的民俗活动，每年春节期间，各地都会举行盛大的游神仪式。村民们抬着神像巡游，锣鼓喧天，彩旗招展，祈求平安和丰收。这一习俗在福建尤为盛行，被称为'神仙蹦迪'。",
+                imageUrl: "https://p26-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/2205116611591012361~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=qYtuw%2B8rs9TPgDAshV1uAa%2BG8aI%3D",
+                relatedQuizIds: ["quiz_003", "quiz_004"],
+                difficulty: 2
+            },
+            {
+                id: "fujian_spring_festival_003",
+                title: "泉州花灯",
+                category: "art",
+                region: "minnan",
+                description: "泉州花灯历史悠久，起于唐代，盛于宋元。以其独有的刻纸、针刺工艺和料丝镶装技艺闻名于世。元宵节期间，泉州城内灯火辉煌，各式花灯争奇斗艳，成为一道独特的风景线。",
+                imageUrl: "https://p3-doubao-search-sign.byteimg.com/labis/1b88e8133316b1c3ae6f8497e9d15cda~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=y7DumIURlgJfkvDDJghuQh0fO%2Fo%3D",
+                relatedQuizIds: ["quiz_005", "quiz_006"],
+                difficulty: 2
+            },
+            {
+                id: "fujian_spring_festival_004",
+                title: "福州鱼丸",
+                category: "food",
+                region: "fuzhou",
+                description: "福州鱼丸是福州传统名吃，象征'团团圆圆、年年有余'。以鱼肉做皮，猪肉做馅，皮薄馅足、Q弹多汁。在春节期间，鱼丸是福州人年夜饭桌上必不可少的一道美食。永和鱼丸制作技艺更是被列入省级非物质文化遗产。",
+                imageUrl: "https://p3-doubao-search-sign.byteimg.com/pgc-image/aedaed5753b14b1390ed13710d022f2a~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=6505KohgWau2W6tZb0r9u8mR4IA%3D",
+                relatedQuizIds: ["quiz_007", "quiz_008"],
+                difficulty: 1
+            },
+            {
+                id: "fujian_spring_festival_005",
+                title: "莆田红团",
+                category: "food",
+                region: "putian",
+                description: "莆田红团是莆田地区特有的传统小吃，春节期间家家户户都会制作。它以糯米皮包着豆沙、芝麻馅，捏成圆形裹上红粉，寓意团团圆圆、红红火火。红团不仅是美食，更是莆田人过年的重要象征。",
+                imageUrl: "https://p11-doubao-search-sign.byteimg.com/pgc-image/026f10f75b1d4c33887f247b8d78b783~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=fjArNJO88qN9UMZSGibdnbveyyA%3D",
+                relatedQuizIds: ["quiz_009", "quiz_010"],
+                difficulty: 2
+            },
+            {
+                id: "fujian_spring_festival_006",
+                title: "闽南拜天公",
+                category: "ritual",
+                region: "minnan",
+                description: "正月初九闽南'拜天公'是闽台地区最重要的年俗之一。凌晨子时便开始设坛祭拜，叠高八仙桌作为'顶桌'，供奉五果六斋、清茶面线，'下桌'摆放五牲、红龟粿，全家斋戒沐浴、行三跪九叩礼，虔诚祈求天公赐福。",
+                imageUrl: "https://p11-doubao-search-sign.byteimg.com/labis/cdd82364acaf6c51d84f7274368c5260~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=E%2FWzsEUoygQKsv7HVZjDUGvE%2BC4%3D",
+                relatedQuizIds: ["quiz_011", "quiz_012"],
+                difficulty: 3
+            },
+            {
+                id: "fujian_spring_festival_007",
+                title: "闽西客家游大龙",
+                category: "activity",
+                region: "minxi",
+                description: "闽西客家地区盛行'游大龙'，连城县姑田镇的'姑田大龙'闻名遐迩，被誉为'天下第一龙'。数百节龙身连接成长达数百米的巨龙，在街巷田野间腾挪，搭配火壶、火棍表演，祈求风调雨顺、人丁兴旺。",
+                imageUrl: "https://p26-doubao-search-sign.byteimg.com/tos-cn-i-6w9my0ksvp/450a5f9e8c0d4120bbadbf147b064278~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=2vMFjvN0ygHoykIvLaLxyq26RUw%3D",
+                relatedQuizIds: ["quiz_013", "quiz_014"],
+                difficulty: 2
+            },
+            {
+                id: "fujian_spring_festival_008",
+                title: "莆田做大岁",
+                category: "ritual",
+                region: "putian",
+                description: "正月初四，莆仙地区迎来独特的'做大岁'习俗。这一习俗源于460多年前的抗倭之战，当年百姓为躲避倭寇错过除夕，平定后补过新年，代代相传成俗。这天莆仙人再次摆上团圆宴，热闹程度不亚于除夕。",
+                imageUrl: "https://p26-doubao-search-sign.byteimg.com/labis/d6e7c2de552bb48209ec8ade99a41c99~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=tHheMXDSw%2BAH%2BIwhUtwqaBhaVKk%3D",
+                relatedQuizIds: ["quiz_015", "quiz_016"],
+                difficulty: 2
+            },
+            {
+                id: "fujian_spring_festival_009",
+                title: "厦门同安封肉",
+                category: "food",
+                region: "minnan",
+                description: "厦门同安封肉是厦门传统名菜，春节期间家家户户都会准备。它以五花肉为主料，配以板栗、香菇等，用纱布包裹后炖煮至软烂，酱香浓郁。封肉象征着来年红红火火、富裕安康。",
+                imageUrl: "https://p11-doubao-search-sign.byteimg.com/pgc-image/RHx6EF37qWFv6M~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785855899&x-signature=ErbUPaUVj0nrOwUJ2dPHExOVk3U%3D",
+                relatedQuizIds: ["quiz_017", "quiz_018"],
+                difficulty: 1
+            }
+        ];
+
+        const quizData = [
+            {
+                id: "quiz_001",
+                question: "福州祭灶遵循的'官三民四船五'古制中，普通百姓是在哪一天祭灶？",
+                options: ["腊月二十三", "腊月二十四", "腊月二十五", "腊月二十六"],
+                correctAnswer: 1,
+                explanation: "福州祭灶遵循'官三民四船五'的古制，官家廿三祭灶、百姓廿四祭灶、疍民廿五祭灶。这一习俗反映了福州地区不同社会阶层的文化差异。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_002",
+                question: "福州祭灶时，人们会用什么食物黏住灶神的嘴，祈求'上天言好事'？",
+                options: ["糖果", "灶糖", "年糕", "汤圆"],
+                correctAnswer: 1,
+                explanation: "福州祭灶时，家家户户会摆上灶糖、清茶，用甜糯的灶糖黏住灶神的嘴，祈求他'上天言好事，回宫降吉祥'。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_003",
+                question: "福建游神是一项历史悠久的民俗活动，主要目的是什么？",
+                options: ["祈求平安和丰收", "展示财富", "庆祝婚礼", "纪念先人"],
+                correctAnswer: 0,
+                explanation: "福建游神是一项历史悠久的民俗活动，每年春节期间举行，主要目的是祈求平安和丰收。村民们抬着神像巡游，锣鼓喧天，彩旗招展。",
+                relatedCultureIds: ["fujian_spring_festival_002"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_004",
+                question: "福建游神活动中，抬神像的人被称为什么？",
+                options: ["神仙", "信徒", "轿夫", "神人"],
+                correctAnswer: 2,
+                explanation: "在福建游神活动中，抬神像的人被称为轿夫。他们通常是村里的青壮年男子，负责抬着神像巡游全村。",
+                relatedCultureIds: ["fujian_spring_festival_002"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_005",
+                question: "泉州花灯以哪三种工艺闻名于世？",
+                options: ["剪纸、绘画、刺绣", "刻纸、针刺、料丝镶装", "木雕、泥塑、彩绘", "编织、印染、雕刻"],
+                correctAnswer: 1,
+                explanation: "泉州花灯以其独有的刻纸、针刺工艺和料丝镶装技艺闻名于世。这些传统工艺经过千年传承，形成了独特的艺术风格。",
+                relatedCultureIds: ["fujian_spring_festival_003"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_006",
+                question: "泉州花灯的历史可以追溯到哪个朝代？",
+                options: ["唐代", "宋代", "元代", "明代"],
+                correctAnswer: 0,
+                explanation: "泉州花灯历史悠久，起于唐代，盛于宋元。唐代时，泉州已开始有元宵赏灯的习俗。",
+                relatedCultureIds: ["fujian_spring_festival_003"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_007",
+                question: "福州鱼丸象征着什么寓意？",
+                options: ["年年有余", "团团圆圆", "红红火火", "吉祥如意"],
+                correctAnswer: 1,
+                explanation: "福州鱼丸象征着'团团圆圆、年年有余'。在春节期间，鱼丸是福州人年夜饭桌上必不可少的一道美食。",
+                relatedCultureIds: ["fujian_spring_festival_004"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_008",
+                question: "福州鱼丸的制作技艺被列入了哪一级别的非物质文化遗产？",
+                options: ["国家级", "省级", "市级", "县级"],
+                correctAnswer: 1,
+                explanation: "2007年，永和鱼丸制作技艺被福建省人民政府列入第二批省级非物质文化遗产代表性项目名录。",
+                relatedCultureIds: ["fujian_spring_festival_004"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_009",
+                question: "莆田红团的外皮是用什么材料制作的？",
+                options: ["面粉", "糯米粉", "玉米粉", "地瓜粉"],
+                correctAnswer: 1,
+                explanation: "莆田红团以糯米皮包着豆沙、芝麻馅，捏成圆形裹上红粉，寓意团团圆圆、红红火火。",
+                relatedCultureIds: ["fujian_spring_festival_005"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_010",
+                question: "莆田红团外面裹的红色粉末有什么寓意？",
+                options: ["红红火火", "吉祥如意", "驱邪避灾", "招财进宝"],
+                correctAnswer: 0,
+                explanation: "莆田红团外面裹的红色粉末寓意红红火火，象征着新的一年生活美满、事业兴旺。",
+                relatedCultureIds: ["fujian_spring_festival_005"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_011",
+                question: "闽南'拜天公'是在农历哪一天举行？",
+                options: ["正月初一", "正月初五", "正月初九", "正月十五"],
+                correctAnswer: 2,
+                explanation: "正月初九闽南'拜天公'是闽台地区最重要的年俗之一。这一天，家家户户都会举行隆重的祭祀仪式，祈求天公赐福。",
+                relatedCultureIds: ["fujian_spring_festival_006"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_012",
+                question: "闽南'拜天公'时，人们会在供桌上摆放什么特殊物品？",
+                options: ["鲜花", "水果", "五果六斋", "肉类"],
+                correctAnswer: 2,
+                explanation: "闽南'拜天公'时，人们会在供桌上摆放五果六斋、清茶面线等供品，虔诚祈求天公赐福。",
+                relatedCultureIds: ["fujian_spring_festival_006"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_013",
+                question: "闽西客家'游大龙'活动中，哪一个地方的大龙被誉为'天下第一龙'？",
+                options: ["连城县姑田镇", "永定区湖坑镇", "长汀县汀州镇", "上杭县临江镇"],
+                correctAnswer: 0,
+                explanation: "连城县姑田镇的'姑田大龙'闻名遐迩，被誉为'天下第一龙'。数百节龙身连接成长达数百米的巨龙，在街巷田野间腾挪。",
+                relatedCultureIds: ["fujian_spring_festival_007"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_014",
+                question: "闽西客家'游大龙'活动的主要目的是什么？",
+                options: ["祈求风调雨顺", "展示力量", "庆祝丰收", "纪念先人"],
+                correctAnswer: 0,
+                explanation: "闽西客家'游大龙'活动的主要目的是祈求风调雨顺、人丁兴旺。这一习俗已列入国家级非物质文化遗产。",
+                relatedCultureIds: ["fujian_spring_festival_007"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_015",
+                question: "莆田'做大岁'习俗起源于什么历史事件？",
+                options: ["抗倭之战", "抗日战争", "解放战争", "自然灾害"],
+                correctAnswer: 0,
+                explanation: "莆田'做大岁'习俗源于460多年前的抗倭之战，当年百姓为躲避倭寇错过除夕，平定后补过新年，代代相传成俗。",
+                relatedCultureIds: ["fujian_spring_festival_008"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_016",
+                question: "莆田'做大岁'是在农历哪一天举行？",
+                options: ["正月初二", "正月初三", "正月初四", "正月初五"],
+                correctAnswer: 2,
+                explanation: "正月初四，莆仙地区迎来独特的'做大岁'习俗。这天莆仙人再次摆上团圆宴，热闹程度不亚于除夕。",
+                relatedCultureIds: ["fujian_spring_festival_008"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_017",
+                question: "厦门同安封肉象征着什么寓意？",
+                options: ["团团圆圆", "红红火火", "年年有余", "吉祥如意"],
+                correctAnswer: 1,
+                explanation: "厦门同安封肉是厦门传统名菜，春节期间家家户户都会准备。它象征着来年红红火火、富裕安康。",
+                relatedCultureIds: ["fujian_spring_festival_009"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_018",
+                question: "厦门同安封肉的主要食材是什么？",
+                options: ["鸡肉", "猪肉", "牛肉", "羊肉"],
+                correctAnswer: 1,
+                explanation: "厦门同安封肉以五花肉为主料，配以板栗、香菇等，用纱布包裹后炖煮至软烂，酱香浓郁。",
+                relatedCultureIds: ["fujian_spring_festival_009"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_019",
+                question: "福建春节期间，人们通常会在门上贴什么来驱邪避灾？",
+                options: ["对联", "福字", "门神", "窗花"],
+                correctAnswer: 2,
+                explanation: "福建春节期间，人们会在门上贴门神来驱邪避灾。门神通常是秦琼和尉迟恭的画像，象征着守护家庭平安。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_020",
+                question: "福建春节时，长辈会给晚辈什么礼物表示祝福？",
+                options: ["红包", "糖果", "玩具", "衣服"],
+                correctAnswer: 0,
+                explanation: "福建春节时，长辈会给晚辈发红包（压岁钱），寓意压住邪祟，保佑晚辈平安健康。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_021",
+                question: "福州春节期间，人们会到哪里烧香祈福？",
+                options: ["鼓山涌泉寺", "西湖公园", "三坊七巷", "闽江公园"],
+                correctAnswer: 0,
+                explanation: "福州春节期间，人们会到鼓山涌泉寺烧香祈福，祈求新的一年平安顺利、万事如意。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_022",
+                question: "泉州春节期间的'踩街'活动通常在什么时候举行？",
+                options: ["除夕", "正月初一", "正月十五", "正月初九"],
+                correctAnswer: 2,
+                explanation: "泉州春节期间的'踩街'活动通常在正月十五元宵节举行，各种民俗表演队伍沿街游行，热闹非凡。",
+                relatedCultureIds: ["fujian_spring_festival_003"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_023",
+                question: "闽南地区春节期间，人们会吃一种叫做'甜粿'的食物，它是什么做的？",
+                options: ["糯米", "面粉", "地瓜", "玉米"],
+                correctAnswer: 0,
+                explanation: "闽南地区的'甜粿'是用糯米粉、糖和水蒸制而成的传统美食，象征着生活甜蜜、步步高升。",
+                relatedCultureIds: ["fujian_spring_festival_006"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_024",
+                question: "福建春节期间，农村地区会举行什么活动来庆祝丰收？",
+                options: ["舞龙舞狮", "拔河比赛", "篝火晚会", "唱戏"],
+                correctAnswer: 0,
+                explanation: "福建春节期间，农村地区会举行舞龙舞狮活动来庆祝丰收，祈求新的一年风调雨顺。",
+                relatedCultureIds: ["fujian_spring_festival_002"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_025",
+                question: "莆田春节期间，人们会制作一种叫做'红团'的传统食品，它的主要馅料是什么？",
+                options: ["豆沙", "芝麻", "花生", "以上都是"],
+                correctAnswer: 3,
+                explanation: "莆田红团的主要馅料有豆沙、芝麻、花生等，外皮用糯米粉制作，裹上红色粉末，象征着团团圆圆、红红火火。",
+                relatedCultureIds: ["fujian_spring_festival_005"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_026",
+                question: "福建春节期间，人们通常会在什么时候燃放鞭炮？",
+                options: ["除夕零点", "正月初一早晨", "正月十五晚上", "以上都是"],
+                correctAnswer: 3,
+                explanation: "福建春节期间，人们会在除夕零点、正月初一早晨和正月十五晚上燃放鞭炮，驱邪避灾、庆祝新年。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_027",
+                question: "闽西客家春节期间，人们会举行什么传统仪式来祭祀祖先？",
+                options: ["祭祖大典", "扫墓", "家祭", "祠堂祭祀"],
+                correctAnswer: 3,
+                explanation: "闽西客家春节期间，人们会在祠堂举行隆重的祭祀仪式，缅怀祖先、祈求祖先保佑家族兴旺。",
+                relatedCultureIds: ["fujian_spring_festival_007"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_028",
+                question: "福建春节期间，人们通常会吃什么来象征'年年有余'？",
+                options: ["鱼", "鸡", "肉", "年糕"],
+                correctAnswer: 0,
+                explanation: "福建春节期间，人们会吃鱼来象征'年年有余'，寓意新的一年生活富足、有余粮。",
+                relatedCultureIds: ["fujian_spring_festival_004"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_029",
+                question: "福州春节期间，人们会吃一种叫做'太平燕'的传统美食，它的主要成分是什么？",
+                options: ["猪肉", "鸡肉", "鱼肉", "虾肉"],
+                correctAnswer: 0,
+                explanation: "福州太平燕是用猪肉燕皮包裹肉馅制作而成的传统美食，象征着平安吉祥。",
+                relatedCultureIds: ["fujian_spring_festival_004"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_030",
+                question: "福建春节期间，人们通常会在什么时候贴春联？",
+                options: ["除夕上午", "除夕下午", "正月初一", "腊月三十"],
+                correctAnswer: 1,
+                explanation: "福建春节期间，人们通常会在除夕下午贴春联，寓意辞旧迎新、纳福招财。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_031",
+                question: "福建春节期间，人们通常会在门上贴什么字，寓意'福气到'？",
+                options: ["吉", "福", "喜", "财"],
+                correctAnswer: 1,
+                explanation: "福建春节期间，人们会在门上贴'福'字，有的会倒着贴，寓意'福气到'（倒福谐音到福）。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_032",
+                question: "闽南地区春节期间，人们会举行'跳火群'活动，这一习俗的主要目的是什么？",
+                options: ["驱邪避灾", "庆祝丰收", "祈求平安", "锻炼身体"],
+                correctAnswer: 0,
+                explanation: "闽南地区的'跳火群'活动是在除夕或正月初一进行，人们跳过燃烧的火堆，象征着驱邪避灾、消灾免祸。",
+                relatedCultureIds: ["fujian_spring_festival_006"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_033",
+                question: "福建春节期间，人们通常会吃一种叫做'年糕'的食物，它象征着什么？",
+                options: ["年年有余", "步步高升", "团团圆圆", "红红火火"],
+                correctAnswer: 1,
+                explanation: "年糕象征着'步步高升'，因为'糕'与'高'谐音，寓意新的一年事业、生活等各方面都能步步高升。",
+                relatedCultureIds: ["fujian_spring_festival_004"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_034",
+                question: "福州春节期间，人们会吃一种叫做'线面'的食物，它通常与什么一起食用？",
+                options: ["鸡蛋", "海鲜", "肉类", "蔬菜"],
+                correctAnswer: 0,
+                explanation: "福州线面通常与鸡蛋一起食用，称为'太平面'，象征着平安吉祥。春节期间，人们会吃太平面祈求平安。",
+                relatedCultureIds: ["fujian_spring_festival_004"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_035",
+                question: "福建春节期间，农村地区会举行'舞狮'活动，舞狮通常由几个人表演？",
+                options: ["1人", "2人", "3人", "4人"],
+                correctAnswer: 1,
+                explanation: "舞狮通常由两个人表演，一个人站在前面扮狮头，一个人站在后面扮狮身和狮尾，配合默契，表演各种动作。",
+                relatedCultureIds: ["fujian_spring_festival_002"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_036",
+                question: "闽南地区春节期间，人们会到寺庙'进香'，这一活动通常在什么时候举行？",
+                options: ["除夕", "正月初一", "正月十五", "正月初九"],
+                correctAnswer: 1,
+                explanation: "闽南地区春节期间，人们会在正月初一到寺庙'进香'，祈求新的一年平安顺利、万事如意。",
+                relatedCultureIds: ["fujian_spring_festival_006"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_037",
+                question: "福建春节期间，人们通常会在什么时候吃团圆饭？",
+                options: ["除夕中午", "除夕晚上", "正月初一早上", "正月初一中午"],
+                correctAnswer: 1,
+                explanation: "福建春节期间，人们通常会在除夕晚上吃团圆饭，全家团聚，共享丰盛的晚餐，象征着团圆美满。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_038",
+                question: "莆田春节期间，人们会举行'游春饼'活动，春饼的主要馅料是什么？",
+                options: ["蔬菜", "肉类", "海鲜", "以上都是"],
+                correctAnswer: 3,
+                explanation: "莆田春饼的主要馅料包括蔬菜、肉类、海鲜等，卷在薄饼中食用，象征着五谷丰登、生活富足。",
+                relatedCultureIds: ["fujian_spring_festival_008"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_039",
+                question: "福建春节期间，人们通常会在窗户上贴什么来装饰？",
+                options: ["窗花", "春联", "福字", "年画"],
+                correctAnswer: 0,
+                explanation: "福建春节期间，人们会在窗户上贴窗花，通常是红色的剪纸，图案有花鸟、福字等，寓意吉祥如意。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_040",
+                question: "闽西客家春节期间，人们会吃一种叫做'酿豆腐'的食物，它象征着什么？",
+                options: ["团圆美满", "招财进宝", "年年有余", "吉祥如意"],
+                correctAnswer: 1,
+                explanation: "闽西客家酿豆腐象征着'招财进宝'，因为豆腐谐音'都福'，酿入馅料后形如金元宝，寓意财富广进。",
+                relatedCultureIds: ["fujian_spring_festival_007"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_041",
+                question: "福建春节期间，人们通常会在什么时候'守岁'？",
+                options: ["除夕白天", "除夕晚上", "正月初一晚上", "正月十五晚上"],
+                correctAnswer: 1,
+                explanation: "福建春节期间，人们会在除夕晚上'守岁'，熬夜到凌晨，象征着辞旧迎新、祈求长寿。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_042",
+                question: "泉州春节期间，人们会举行'烧塔仔'活动，这一习俗与哪个历史事件有关？",
+                options: ["抗倭之战", "抗日战争", "解放战争", "自然灾害"],
+                correctAnswer: 0,
+                explanation: "泉州的'烧塔仔'活动源于抗倭之战，当年百姓用燃烧的塔火传递信号，抗击倭寇，后来演变为春节习俗。",
+                relatedCultureIds: ["fujian_spring_festival_003"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_043",
+                question: "福建春节期间，人们走亲访友时通常会携带什么礼物？",
+                options: ["糖果", "水果", "烟酒", "以上都是"],
+                correctAnswer: 3,
+                explanation: "福建春节期间，人们走亲访友时通常会携带糖果、水果、烟酒等礼物，表达祝福和心意。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_044",
+                question: "闽南地区春节期间，人们会吃一种叫做'菜包'的食物，它的主要馅料是什么？",
+                options: ["蔬菜", "肉类", "海鲜", "豆沙"],
+                correctAnswer: 0,
+                explanation: "闽南地区的'菜包'是用糯米皮包裹蔬菜馅料蒸制而成的传统美食，象征着新的一年清吉平安。",
+                relatedCultureIds: ["fujian_spring_festival_006"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_045",
+                question: "福建春节期间，人们通常会在正月初一做什么？",
+                options: ["走亲访友", "打扫卫生", "出门旅游", "睡懒觉"],
+                correctAnswer: 0,
+                explanation: "福建春节期间，人们通常会在正月初一走亲访友，互相拜年，祝福新年。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_046",
+                question: "福州春节期间，人们会举行'拗九节'活动，这一节日通常在什么时候？",
+                options: ["正月初九", "正月十九", "二月初九", "二月十九"],
+                correctAnswer: 1,
+                explanation: "福州的'拗九节'通常在正月十九举行，人们会吃拗九粥，孝顺父母，弘扬孝道。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_047",
+                question: "福建春节期间，人们通常会在什么时候'送穷'？",
+                options: ["除夕", "正月初一", "正月初五", "正月十五"],
+                correctAnswer: 2,
+                explanation: "福建春节期间，人们通常会在正月初五'送穷'，打扫卫生，将垃圾送出家门，象征着送走贫穷，迎来富裕。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_048",
+                question: "闽南地区春节期间，人们会举行'掷筊'活动，这一活动的主要目的是什么？",
+                options: ["占卜吉凶", "娱乐游戏", "庆祝丰收", "祈求平安"],
+                correctAnswer: 0,
+                explanation: "闽南地区的'掷筊'活动是一种传统的占卜方式，人们通过掷筊来询问神明，占卜吉凶祸福。",
+                relatedCultureIds: ["fujian_spring_festival_006"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_049",
+                question: "福建春节期间，人们通常会在门上挂什么来驱邪避灾？",
+                options: ["艾草", "菖蒲", "桃符", "大蒜"],
+                correctAnswer: 2,
+                explanation: "福建春节期间，人们会在门上挂桃符，后来演变为春联，用来驱邪避灾、祈求平安。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 2,
+                type: "multiple_choice"
+            },
+            {
+                id: "quiz_050",
+                question: "福建春节期间，孩子们通常会收到什么礼物？",
+                options: ["红包", "玩具", "衣服", "以上都是"],
+                correctAnswer: 3,
+                explanation: "福建春节期间，孩子们通常会收到红包、玩具、衣服等礼物，其中红包是最传统的礼物，寓意压住邪祟，保佑平安。",
+                relatedCultureIds: ["fujian_spring_festival_001"],
+                difficulty: 1,
+                type: "multiple_choice"
+            }
+        ];
+
+        const achievements = [
+            {
+                id: "achievement_001",
+                title: "民俗初学者",
+                description: "完成5个民俗文化知识点的学习",
+                icon: "fa-book",
+                requirement: {
+                    type: "learn_cultures",
+                    count: 5
+                },
+                unlocked: false
+            },
+            {
+                id: "achievement_002",
+                title: "答题能手",
+                description: "答题正确率达到80%",
+                icon: "fa-question-circle",
+                requirement: {
+                    type: "quiz_accuracy",
+                    percentage: 80
+                },
+                unlocked: false
+            },
+            {
+                id: "achievement_003",
+                title: "福州文化通",
+                description: "学习所有福州地区的民俗文化",
+                icon: "fa-map-marker",
+                requirement: {
+                    type: "learn_region",
+                    region: "fuzhou"
+                },
+                unlocked: false
+            },
+            {
+                id: "achievement_004",
+                title: "闽南文化通",
+                description: "学习所有闽南地区的民俗文化",
+                icon: "fa-map-marker",
+                requirement: {
+                    type: "learn_region",
+                    region: "minnan"
+                },
+                unlocked: false
+            },
+            {
+                id: "achievement_005",
+                title: "民俗专家",
+                description: "完成所有民俗文化知识点的学习",
+                icon: "fa-graduation-cap",
+                requirement: {
+                    type: "learn_all_cultures"
+                },
+                unlocked: false
+            },
+            {
+                id: "achievement_006",
+                title: "答题大师",
+                description: "完成所有答题",
+                icon: "fa-trophy",
+                requirement: {
+                    type: "complete_all_quizzes"
+                },
+                unlocked: false
+            },
+            {
+                id: "achievement_007",
+                title: "祭祀文化通",
+                description: "学习所有祭祀习俗类的民俗文化",
+                icon: "fa-flag",
+                requirement: {
+                    type: "learn_category",
+                    category: "ritual"
+                },
+                unlocked: false
+            },
+            {
+                id: "achievement_008",
+                title: "美食文化通",
+                description: "学习所有饮食文化类的民俗文化",
+                icon: "fa-cutlery",
+                requirement: {
+                    type: "learn_category",
+                    category: "food"
+                },
+                unlocked: false
+            }
+        ];
+
+        const quizTopics = [
+            {
+                id: "topic_001",
+                title: "福州春节民俗",
+                description: "测试你对福州地区春节民俗的了解",
+                icon: "fa-map-marker",
+                color: "bg-red-500",
+                quizIds: ["quiz_001", "quiz_002", "quiz_007", "quiz_008", "quiz_031", "quiz_034", "quiz_046"]
+            },
+            {
+                id: "topic_002",
+                title: "闽南春节民俗",
+                description: "测试你对闽南地区春节民俗的了解",
+                icon: "fa-map-marker",
+                color: "bg-blue-500",
+                quizIds: ["quiz_005", "quiz_006", "quiz_011", "quiz_012", "quiz_017", "quiz_018", "quiz_032", "quiz_036", "quiz_042", "quiz_044", "quiz_048"]
+            },
+            {
+                id: "topic_003",
+                title: "祭祀习俗",
+                description: "测试你对福建春节祭祀习俗的了解",
+                icon: "fa-flag",
+                color: "bg-yellow-500",
+                quizIds: ["quiz_001", "quiz_002", "quiz_011", "quiz_012", "quiz_015", "quiz_016"]
+            },
+            {
+                id: "topic_004",
+                title: "莆田春节民俗",
+                description: "测试你对莆田地区春节民俗的了解",
+                icon: "fa-map-marker",
+                color: "bg-green-500",
+                quizIds: ["quiz_009", "quiz_010", "quiz_015", "quiz_016", "quiz_038"]
+            },
+            {
+                id: "topic_005",
+                title: "闽西客家民俗",
+                description: "测试你对闽西客家地区春节民俗的了解",
+                icon: "fa-map-marker",
+                color: "bg-purple-500",
+                quizIds: ["quiz_013", "quiz_014", "quiz_040"]
+            },
+            {
+                id: "topic_006",
+                title: "春节饮食文化",
+                description: "测试你对福建春节饮食文化的了解",
+                icon: "fa-cutlery",
+                color: "bg-orange-500",
+                quizIds: ["quiz_007", "quiz_008", "quiz_009", "quiz_010", "quiz_017", "quiz_018", "quiz_033", "quiz_034", "quiz_038", "quiz_040", "quiz_044"]
+            },
+            {
+                id: "topic_007",
+                title: "春节传统活动",
+                description: "测试你对福建春节传统活动的了解",
+                icon: "fa-calendar",
+                color: "bg-indigo-500",
+                quizIds: ["quiz_003", "quiz_004", "quiz_013", "quiz_014", "quiz_032", "quiz_035", "quiz_036", "quiz_041", "quiz_042", "quiz_045", "quiz_047", "quiz_048"]
+            }
+        ];
+
+        // 用户数据
+        let userData = {
+            completedCultures: [],
+            quizResults: [],
+            achievements: [],
+            learningProgress: {
+                totalLearned: 0,
+                totalQuizzes: 0,
+                correctAnswers: 0,
+                accuracy: 0
+            }
+        };
+
+        // 当前答题状态
+        let quizState = {
+            currentMode: null,
+            currentTopic: null,
+            currentQuestions: [],
+            currentQuestionIndex: 0,
+            score: 0,
+            userAnswers: []
+        };
+
+        // DOM 加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化页面
+            initPage();
+            
+            // 导航切换
+            setupNavigation();
+            
+            // 移动端菜单
+            setupMobileMenu();
+            
+            // 初始化首页按钮
+            initHomeButtons();
+            
+            // 初始化知识库
+            initKnowledgeBase();
+            
+            // 初始化答题系统
+            initQuizSystem();
+            
+            // 初始化成就系统
+            initAchievementSystem();
+            
+            // 初始化统计数据
+            initStatistics();
+            
+            // 初始化轮播
+            initTestimonialSlider();
+            
+            // 初始化分享按钮
+            initShareButtons();
+        });
+
+        // 初始化页面
+        function initPage() {
+            // 从本地存储加载用户数据
+            loadUserData();
+            
+            // 显示首页
+            showSection('home');
+        }
+
+        // 设置导航切换
+        function setupNavigation() {
+            console.log('Setting up navigation...');
+            
+            // 桌面端导航
+            const navLinks = document.querySelectorAll('.nav-link');
+            console.log('Found desktop nav links:', navLinks.length);
+            
+            // 打印所有找到的nav-link元素
+            navLinks.forEach((link, index) => {
+                console.log(`Nav link ${index}:`, link.href, link.textContent.trim());
+                link.addEventListener('click', function(e) {
+                    console.log('Desktop nav link clicked:', this.href, 'Text:', this.textContent.trim());
+                    e.preventDefault();
+                    console.log('Prevented default behavior');
+                    const targetId = this.getAttribute('href').substring(1);
+                    console.log('Target ID:', targetId);
+                    showSection(targetId);
+                    console.log('Show section called for:', targetId);
+                    
+                    // 更新导航状态
+                    document.querySelectorAll('.nav-link').forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    console.log('Updated active state');
+                });
+            });
+            
+            // 移动端导航
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            console.log('Found mobile nav links:', mobileNavLinks.length);
+            
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    console.log('Mobile nav link clicked:', this.href);
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    console.log('Target ID:', targetId);
+                    showSection(targetId);
+                    
+                    // 关闭移动端菜单
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                });
+            });
+        }
+
+        // 设置移动端菜单
+        function setupMobileMenu() {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // 显示指定部分
+        function showSection(sectionId) {
+            console.log('Attempting to show section:', sectionId);
+            
+            // 隐藏所有部分
+            const sections = document.querySelectorAll('.page-section');
+            console.log('Found sections:', sections.length);
+            
+            sections.forEach(section => {
+                section.classList.add('hidden');
+                console.log('Hidden section:', section.id);
+            });
+            
+            // 显示指定部分
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                console.log('Shown section:', sectionId);
+                
+                // 如果是知识库页面，加载知识库内容
+                if (sectionId === 'knowledge') {
+                    renderKnowledgeCards();
+                }
+                
+                // 如果是答题页面，重置答题界面
+                if (sectionId === 'quiz') {
+                    // 显示答题模式选择卡片
+                    document.querySelectorAll('.quiz-mode-card').forEach(card => {
+                        card.parentElement.classList.remove('hidden');
+                    });
+                    // 隐藏答题区域和结果
+                    document.getElementById('quiz-container').classList.add('hidden');
+                    document.getElementById('quiz-result').classList.add('hidden');
+                    document.getElementById('topic-selection').classList.add('hidden');
+                }
+                
+                // 如果是成就页面，更新成就显示
+                if (sectionId === 'achievements') {
+                    updateAchievementsDisplay();
+                }
+            } else {
+                console.error('Section not found:', sectionId);
+            }
+        }
+
+        // 初始化首页按钮
+        function initHomeButtons() {
+            console.log('Initializing home buttons...');
+            
+            // 为首页的"开始学习"按钮添加点击事件监听器
+            const startLearningButton = document.querySelector('a[href="#knowledge"].nav-link');
+            if (startLearningButton) {
+                console.log('Found start learning button:', startLearningButton);
+                startLearningButton.addEventListener('click', function(e) {
+                    console.log('Start learning button clicked!');
+                    e.preventDefault();
+                    console.log('Prevented default behavior');
+                    const targetId = this.getAttribute('href').substring(1);
+                    console.log('Target ID:', targetId);
+                    showSection(targetId);
+                    console.log('Show section called for:', targetId);
+                });
+            } else {
+                console.error('Start learning button not found!');
+            }
+            
+            // 为首页的"开始答题"按钮添加点击事件监听器
+            const startQuizButton = document.querySelector('a[href="#quiz"].nav-link');
+            if (startQuizButton) {
+                console.log('Found start quiz button:', startQuizButton);
+                startQuizButton.addEventListener('click', function(e) {
+                    console.log('Start quiz button clicked!');
+                    e.preventDefault();
+                    console.log('Prevented default behavior');
+                    const targetId = this.getAttribute('href').substring(1);
+                    console.log('Target ID:', targetId);
+                    showSection(targetId);
+                    console.log('Show section called for:', targetId);
+                });
+            } else {
+                console.error('Start quiz button not found!');
+            }
+        }
+
+        // 初始化分享按钮
+        function initShareButtons() {
+            console.log('Initializing share buttons...');
+            
+            // 获取分享按钮
+            const shareButton = document.getElementById('share-button');
+            const mobileShareButton = document.getElementById('mobile-share-button');
+            const footerWeixin = document.getElementById('footer-share-weixin');
+            const footerWeibo = document.getElementById('footer-share-weibo');
+            const footerQQ = document.getElementById('footer-share-qq');
+            const footerLink = document.getElementById('footer-share-link');
+            
+            console.log('Found share buttons:', shareButton, mobileShareButton, footerWeixin, footerWeibo, footerQQ, footerLink);
+            
+            // 分享功能
+            function shareContent() {
+                const shareText = '福建春节民俗文化答题 - 了解福建春节传统习俗';
+                const shareUrl = window.location.href;
+                
+                console.log('Sharing content:', shareText, shareUrl);
+                
+                // 检查是否支持Web Share API
+                if (navigator.share) {
+                    console.log('Using Web Share API');
+                    navigator.share({
+                        title: '福建春节民俗文化',
+                        text: shareText,
+                        url: shareUrl,
+                    })
+                    .then(() => console.log('Share successful'))
+                    .catch((error) => console.log('Share error:', error));
+                } else {
+                    // 不支持Web Share API，使用复制链接功能
+                    console.log('Web Share API not supported, using copy link');
+                    copyToClipboard(shareUrl);
+                }
+            }
+            
+            // 复制到剪贴板
+            function copyToClipboard(text) {
+                if (navigator.clipboard && window.isSecureContext) {
+                    // 使用现代Clipboard API
+                    navigator.clipboard.writeText(text)
+                        .then(() => {
+                            alert('链接已复制到剪贴板！');
+                            console.log('Link copied to clipboard');
+                        })
+                        .catch((error) => {
+                            console.error('Clipboard API error:', error);
+                            fallbackCopyTextToClipboard(text);
+                        });
+                } else {
+                    // 回退方法
+                    fallbackCopyTextToClipboard(text);
+                }
+            }
+            
+            // 回退复制方法
+            function fallbackCopyTextToClipboard(text) {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                
+                // 避免滚动到元素
+                textArea.style.top = '0';
+                textArea.style.left = '0';
+                textArea.style.position = 'fixed';
+                
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                
+                try {
+                    const successful = document.execCommand('copy');
+                    const msg = successful ? '链接已复制到剪贴板！' : '复制失败，请手动复制链接。';
+                    alert(msg);
+                    console.log('Fallback copy result:', successful);
+                } catch (err) {
+                    console.error('Fallback copy error:', err);
+                    alert('复制失败，请手动复制链接。');
+                }
+                
+                document.body.removeChild(textArea);
+            }
+            
+            // 社交媒体分享
+            function shareToSocialMedia(platform) {
+                const shareText = '福建春节民俗文化答题 - 了解福建春节传统习俗';
+                const shareUrl = window.location.href;
+                
+                console.log('Sharing to', platform, ':', shareText, shareUrl);
+                
+                let socialUrl = '';
+                
+                switch (platform) {
+                    case 'weixin':
+                        // 微信分享需要特殊处理，这里使用复制链接的方式
+                        alert('请将链接发送给微信好友：\n' + shareUrl);
+                        copyToClipboard(shareUrl);
+                        return;
+                    case 'weibo':
+                        socialUrl = `http://service.weibo.com/share/share.php?url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(shareText)}`;
+                        break;
+                    case 'qq':
+                        socialUrl = `https://connect.qq.com/widget/shareqq/index.html?url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(shareText)}`;
+                        break;
+                    default:
+                        return;
+                }
+                
+                // 打开分享窗口
+                window.open(socialUrl, '_blank', 'width=600,height=400');
+            }
+            
+            // 添加点击事件监听器
+            if (shareButton) {
+                shareButton.addEventListener('click', shareContent);
+            }
+            
+            if (mobileShareButton) {
+                mobileShareButton.addEventListener('click', shareContent);
+            }
+            
+            if (footerWeixin) {
+                footerWeixin.addEventListener('click', () => shareToSocialMedia('weixin'));
+            }
+            
+            if (footerWeibo) {
+                footerWeibo.addEventListener('click', () => shareToSocialMedia('weibo'));
+            }
+            
+            if (footerQQ) {
+                footerQQ.addEventListener('click', () => shareToSocialMedia('qq'));
+            }
+            
+            if (footerLink) {
+                footerLink.addEventListener('click', () => copyToClipboard(window.location.href));
+            }
+        }
+
+        // 初始化知识库
+        function initKnowledgeBase() {
+            const searchInput = document.getElementById('knowledge-search');
+            const categorySelect = document.getElementById('knowledge-category');
+            const regionSelect = document.getElementById('knowledge-region');
+            
+            // 搜索功能
+            searchInput.addEventListener('input', function() {
+                renderKnowledgeCards();
+            });
+            
+            // 分类筛选
+            categorySelect.addEventListener('change', function() {
+                renderKnowledgeCards();
+            });
+            
+            // 地区筛选
+            regionSelect.addEventListener('change', function() {
+                renderKnowledgeCards();
+            });
+        }
+
+        // 渲染知识库卡片
+        function renderKnowledgeCards() {
+            const cardsContainer = document.getElementById('knowledge-cards');
+            const searchInput = document.getElementById('knowledge-search').value.toLowerCase();
+            const categoryFilter = document.getElementById('knowledge-category').value;
+            const regionFilter = document.getElementById('knowledge-region').value;
+            
+            // 筛选数据
+            const filteredData = folkCultureData.filter(item => {
+                const matchesSearch = item.title.toLowerCase().includes(searchInput) || 
+                                     item.description.toLowerCase().includes(searchInput);
+                const matchesCategory = categoryFilter === 'all' || item.category === categoryFilter;
+                const matchesRegion = regionFilter === 'all' || item.region === regionFilter || item.region === 'all';
+                
+                return matchesSearch && matchesCategory && matchesRegion;
+            });
+            
+            // 清空容器
+            cardsContainer.innerHTML = '';
+            
+            // 如果没有结果
+            if (filteredData.length === 0) {
+                cardsContainer.innerHTML = `
+                    <div class="col-span-full text-center py-8">
+                        <i class="fa fa-search text-neutral-400 text-4xl mb-4"></i>
+                        <p class="text-neutral-600">没有找到相关内容</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // 渲染卡片
+            filteredData.forEach(item => {
+                const isCompleted = userData.completedCultures.includes(item.id);
+                
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1';
+                card.innerHTML = `
+                    <div class="relative">
+                        <img src="${item.imageUrl}" alt="${item.title}" class="w-full h-48 object-cover">
+                        ${isCompleted ? '<div class="absolute top-2 right-2 bg-success text-white rounded-full w-8 h-8 flex items-center justify-center"><i class="fa fa-check"></i></div>' : ''}
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-medium px-2 py-1 rounded-full ${getCategoryColorClass(item.category)}">${getCategoryName(item.category)}</span>
+                            <span class="text-xs font-medium px-2 py-1 rounded-full ${getRegionColorClass(item.region)}">${getRegionName(item.region)}</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-800 mb-2">${item.title}</h3>
+                        <p class="text-neutral-600 mb-4 line-clamp-3">${item.description}</p>
+                        <button class="view-culture-btn w-full bg-primary hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300" data-id="${item.id}">
+                            ${isCompleted ? '<i class="fa fa-eye mr-1"></i> 查看详情' : '<i class="fa fa-book mr-1"></i> 开始学习'}
+                        </button>
+                    </div>
+                `;
+                
+                cardsContainer.appendChild(card);
+            });
+            
+            // 添加查看详情事件
+            document.querySelectorAll('.view-culture-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const cultureId = this.getAttribute('data-id');
+                    viewCultureDetail(cultureId);
+                });
+            });
+        }
+
+        // 查看文化详情
+        function viewCultureDetail(cultureId) {
+            const culture = folkCultureData.find(item => item.id === cultureId);
+            
+            if (!culture) return;
+            
+            // 创建模态框
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-xl shadow-xl p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold text-neutral-800">${culture.title}</h3>
+                        <button class="culture-modal-close text-neutral-500 hover:text-neutral-800 focus:outline-none">
+                            <i class="fa fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <img src="${culture.imageUrl}" alt="${culture.title}" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex gap-2 mb-2">
+                            <span class="text-xs font-medium px-2 py-1 rounded-full ${getCategoryColorClass(culture.category)}">${getCategoryName(culture.category)}</span>
+                            <span class="text-xs font-medium px-2 py-1 rounded-full ${getRegionColorClass(culture.region)}">${getRegionName(culture.region)}</span>
+                        </div>
+                        <p class="text-neutral-700">${culture.description}</p>
+                    </div>
+                    
+                    ${culture.relatedQuizIds && culture.relatedQuizIds.length > 0 ? `
+                        <div class="mb-6">
+                            <h4 class="text-lg font-bold text-neutral-800 mb-2">相关问题</h4>
+                            <div class="space-y-2">
+                                ${culture.relatedQuizIds.map(quizId => {
+                                    const quiz = quizData.find(q => q.id === quizId);
+                                    return quiz ? `
+                                        <div class="bg-neutral-100 rounded-lg p-3">
+                                            <p class="text-neutral-800 mb-1">${quiz.question}</p>
+                                            <button class="text-accent hover:text-blue-700 text-sm font-medium view-quiz-btn" data-id="${quiz.id}">
+                                                查看问题 <i class="fa fa-arrow-right ml-1"></i>
+                                            </button>
+                                        </div>
+                                    ` : '';
+                                }).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    <div class="flex justify-between">
+                        <button class="culture-modal-close bg-neutral-200 hover:bg-neutral-300 text-neutral-800 font-medium py-2 px-4 rounded-lg transition-colors duration-300">
+                            关闭
+                        </button>
+                        ${!userData.completedCultures.includes(culture.id) ? `
+                            <button class="complete-culture-btn bg-primary hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300" data-id="${culture.id}">
+                                标记为已学习
+                            </button>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // 关闭模态框
+            modal.querySelectorAll('.culture-modal-close').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.body.removeChild(modal);
+                });
+            });
+            
+            // 查看问题
+            modal.querySelectorAll('.view-quiz-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const quizId = this.getAttribute('data-id');
+                    document.body.removeChild(modal);
+                    showSection('quiz');
+                    startQuizByQuizId(quizId);
+                });
+            });
+            
+            // 标记为已学习
+            modal.querySelectorAll('.complete-culture-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    completeCulture(id);
+                    document.body.removeChild(modal);
+                    renderKnowledgeCards();
+                });
+            });
+            
+            // 如果未学习，自动标记为已学习
+            if (!userData.completedCultures.includes(culture.id)) {
+                setTimeout(() => {
+                    completeCulture(culture.id);
+                    renderKnowledgeCards();
+                }, 3000);
+            }
+        }
+
+        // 标记文化为已学习
+        function completeCulture(cultureId) {
+            if (!userData.completedCultures.includes(cultureId)) {
+                userData.completedCultures.push(cultureId);
+                userData.learningProgress.totalLearned++;
+                saveUserData();
+                checkAchievements();
+            }
+        }
+
+        // 初始化答题系统
+        function initQuizSystem() {
+            console.log('初始化答题系统...');
+            
+            // 答题模式选择
+            const quizModeCards = document.querySelectorAll('.quiz-mode-card');
+            console.log('找到的答题模式卡片数量:', quizModeCards.length);
+            
+            quizModeCards.forEach(card => {
+                console.log('为卡片添加点击事件监听器:', card.getAttribute('data-mode'));
+                card.addEventListener('click', function() {
+                    const mode = this.getAttribute('data-mode');
+                    console.log('点击了答题模式卡片:', mode);
+                    startQuiz(mode);
+                });
+            });
+            
+            // 专题选择模态框
+            const topicModal = document.getElementById('topic-modal');
+            const topicModalClose = document.getElementById('topic-modal-close');
+            const topicModalCancel = document.getElementById('topic-modal-cancel');
+            const topicModalConfirm = document.getElementById('topic-modal-confirm');
+            
+            topicModalClose.addEventListener('click', function() {
+                topicModal.classList.add('hidden');
+            });
+            
+            topicModalCancel.addEventListener('click', function() {
+                topicModal.classList.add('hidden');
+            });
+            
+            topicModalConfirm.addEventListener('click', function() {
+                const selectedTopic = document.querySelector('input[name="topic"]:checked');
+                if (selectedTopic) {
+                    const topicId = selectedTopic.value;
+                    startQuizByTopic(topicId);
+                    topicModal.classList.add('hidden');
+                }
+            });
+            
+            // 答题操作按钮
+            const quizPrev = document.getElementById('quiz-prev');
+            const quizNext = document.getElementById('quiz-next');
+            
+            quizPrev.addEventListener('click', function() {
+                if (quizState.currentQuestionIndex > 0) {
+                    quizState.currentQuestionIndex--;
+                    renderCurrentQuestion();
+                }
+            });
+            
+            quizNext.addEventListener('click', function() {
+                // 如果是最后一题，显示结果
+                if (quizState.currentQuestionIndex === quizState.currentQuestions.length - 1) {
+                    showQuizResult();
+                    return;
+                }
+                
+                // 否则显示下一题
+                quizState.currentQuestionIndex++;
+                renderCurrentQuestion();
+            });
+            
+            // 结果页面按钮
+            const resultRetry = document.getElementById('result-retry');
+            const resultHome = document.getElementById('result-home');
+            
+            resultRetry.addEventListener('click', function() {
+                startQuiz(quizState.currentMode, quizState.currentTopic);
+            });
+            
+            resultHome.addEventListener('click', function() {
+                showSection('home');
+            });
+        }
+
+        // 开始答题
+        function startQuiz(mode, topicId = null) {
+            console.log('开始答题，模式:', mode, '专题ID:', topicId);
+            
+            // 重置答题状态
+            quizState = {
+                currentMode: mode,
+                currentTopic: topicId,
+                currentQuestions: [],
+                currentQuestionIndex: 0,
+                score: 0,
+                userAnswers: []
+            };
+            
+            // 根据模式选择题目
+            if (mode === 'quick') {
+                // 快速答题：随机选择10道题
+                console.log('选择快速答题模式');
+                quizState.currentQuestions = getRandomQuestions(10);
+            } else if (mode === 'topic' && topicId) {
+                // 专题答题：根据专题选择题目
+                console.log('选择专题答题模式，专题ID:', topicId);
+                const topic = quizTopics.find(t => t.id === topicId);
+                if (topic) {
+                    quizState.currentQuestions = topic.quizIds.map(id => {
+                        return quizData.find(q => q.id === id);
+                    }).filter(q => q !== undefined);
+                }
+            } else if (mode === 'topic') {
+                // 显示专题选择
+                console.log('显示专题选择');
+                showTopicSelection();
+                return;
+            } else if (mode === 'challenge') {
+                // 挑战模式：随机选择20道题
+                console.log('选择挑战模式');
+                quizState.currentQuestions = getRandomQuestions(20);
+            }
+            
+            console.log('准备的题目数量:', quizState.currentQuestions.length);
+            
+            // 隐藏模式选择，显示答题区域
+            console.log('隐藏模式选择，显示答题区域');
+            document.querySelectorAll('.quiz-mode-card').forEach(card => {
+                card.parentElement.classList.add('hidden');
+            });
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            
+            // 渲染第一题
+            console.log('渲染第一题');
+            renderCurrentQuestion();
+        }
+
+        // 通过专题开始答题
+        function startQuizByTopic(topicId) {
+            startQuiz('topic', topicId);
+        }
+
+        // 通过题目ID开始答题
+        function startQuizByQuizId(quizId) {
+            const quiz = quizData.find(q => q.id === quizId);
+            if (!quiz) return;
+            
+            // 设置答题状态
+            quizState = {
+                currentMode: 'single',
+                currentTopic: null,
+                currentQuestions: [quiz],
+                currentQuestionIndex: 0,
+                score: 0,
+                userAnswers: []
+            };
+            
+            // 隐藏模式选择，显示答题区域
+            document.querySelectorAll('.quiz-mode-card').forEach(card => {
+                card.parentElement.classList.add('hidden');
+            });
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            
+            // 渲染题目
+            renderCurrentQuestion();
+        }
+
+        // 显示专题选择
+        function showTopicSelection() {
+            const topicSelection = document.getElementById('topic-selection');
+            topicSelection.innerHTML = '';
+            
+            quizTopics.forEach(topic => {
+                const topicCard = document.createElement('div');
+                topicCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 cursor-pointer';
+                topicCard.innerHTML = `
+                    <div class="h-32 ${topic.color} flex items-center justify-center">
+                        <i class="fa ${topic.icon} text-white text-4xl"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-neutral-800 mb-1">${topic.title}</h3>
+                        <p class="text-sm text-neutral-600">${topic.description}</p>
+                    </div>
+                `;
+                
+                topicCard.addEventListener('click', function() {
+                    startQuizByTopic(topic.id);
+                });
+                
+                topicSelection.appendChild(topicCard);
+            });
+            
+            // 显示专题选择，隐藏其他区域
+            document.querySelectorAll('.quiz-mode-card').forEach(card => {
+                card.parentElement.classList.add('hidden');
+            });
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            topicSelection.classList.remove('hidden');
+        }
+
+        // 渲染当前题目
+        function renderCurrentQuestion() {
+            const question = quizState.currentQuestions[quizState.currentQuestionIndex];
+            if (!question) return;
+            
+            // 更新进度
+            document.getElementById('quiz-progress').textContent = `${quizState.currentQuestionIndex + 1}/${quizState.currentQuestions.length}`;
+            document.getElementById('quiz-progress-bar').style.width = `${(quizState.currentQuestionIndex + 1) / quizState.currentQuestions.length * 100}%`;
+            
+            // 更新题目
+            document.getElementById('quiz-question').textContent = question.question;
+            
+            // 更新选项
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                const isSelected = quizState.userAnswers[quizState.currentQuestionIndex] === index;
+                const isAnswered = quizState.userAnswers[quizState.currentQuestionIndex] !== undefined;
+                const isCorrect = isAnswered && index === question.correctAnswer;
+                const isWrong = isAnswered && isSelected && index !== question.correctAnswer;
+                
+                optionDiv.className = `p-3 border rounded-lg cursor-pointer transition-colors duration-300 ${
+                    isSelected ? (isCorrect ? 'border-success bg-green-50' : 'border-primary bg-red-50') : 'border-neutral-300 hover:border-primary hover:bg-red-50'
+                } ${isAnswered ? 'opacity-75' : ''}`;
+                
+                optionDiv.innerHTML = `
+                    <div class="flex items-center">
+                        <div class="w-6 h-6 rounded-full border ${
+                            isSelected ? (isCorrect ? 'border-success bg-success text-white' : 'border-primary bg-primary text-white') : 'border-neutral-400 text-neutral-600'
+                        } flex items-center justify-center mr-3">
+                            ${String.fromCharCode(65 + index)}
+                        </div>
+                        <span class="text-neutral-800">${option}</span>
+                        ${isAnswered ? (isCorrect ? '<i class="fa fa-check-circle text-success ml-auto"></i>' : (isWrong ? '<i class="fa fa-times-circle text-primary ml-auto"></i>' : '')) : ''}
+                    </div>
+                `;
+                
+                // 如果已经回答过，不允许再次选择
+                if (!isAnswered) {
+                    optionDiv.addEventListener('click', function() {
+                        selectOption(index);
+                    });
+                }
+                
+                optionsContainer.appendChild(optionDiv);
+            });
+            
+            // 更新反馈区域
+            const feedbackContainer = document.getElementById('quiz-feedback');
+            if (quizState.userAnswers[quizState.currentQuestionIndex] !== undefined) {
+                const isCorrect = quizState.userAnswers[quizState.currentQuestionIndex] === question.correctAnswer;
+                
+                feedbackContainer.className = `mb-6 p-4 rounded-lg ${isCorrect ? 'bg-green-100 text-success' : 'bg-red-100 text-primary'}`;
+                feedbackContainer.innerHTML = `
+                    <div class="flex items-start">
+                        <i class="fa ${isCorrect ? 'fa-check-circle' : 'fa-times-circle'} text-xl mr-2 mt-1"></i>
+                        <div>
+                            <p class="font-bold mb-1">${isCorrect ? '回答正确！' : '回答错误！'}</p>
+                            <p>${question.explanation}</p>
+                        </div>
+                    </div>
+                `;
+                feedbackContainer.classList.remove('hidden');
+            } else {
+                feedbackContainer.classList.add('hidden');
+            }
+            
+            // 更新按钮状态
+            document.getElementById('quiz-prev').disabled = quizState.currentQuestionIndex === 0;
+            document.getElementById('quiz-next').textContent = quizState.currentQuestionIndex === quizState.currentQuestions.length - 1 ? '完成答题' : '下一题';
+            document.getElementById('quiz-next').innerHTML = quizState.currentQuestionIndex === quizState.currentQuestions.length - 1 ? '完成答题 <i class="fa fa-check ml-1"></i>' : '下一题 <i class="fa fa-arrow-right ml-1"></i>';
+        }
+
+        // 选择选项
+        function selectOption(index) {
+            const question = quizState.currentQuestions[quizState.currentQuestionIndex];
+            
+            // 记录答案
+            quizState.userAnswers[quizState.currentQuestionIndex] = index;
+            
+            // 检查是否正确
+            const isCorrect = index === question.correctAnswer;
+            if (isCorrect) {
+                quizState.score++;
+            }
+            
+            // 保存答题结果
+            saveQuizResult(question.id, index, isCorrect);
+            
+            // 重新渲染题目
+            renderCurrentQuestion();
+        }
+
+        // 保存答题结果
+        function saveQuizResult(quizId, userAnswer, isCorrect) {
+            // 检查是否已经答过这道题
+            const existingResult = userData.quizResults.find(result => result.quizId === quizId);
+            
+            if (!existingResult) {
+                // 添加新的答题结果
+                userData.quizResults.push({
+                    quizId: quizId,
+                    userAnswer: userAnswer,
+                    isCorrect: isCorrect,
+                    timestamp: new Date().toISOString()
+                });
+                
+                // 更新统计数据
+                userData.learningProgress.totalQuizzes++;
+                if (isCorrect) {
+                    userData.learningProgress.correctAnswers++;
+                }
+            } else if (!existingResult.isCorrect && isCorrect) {
+                // 如果之前答错了，现在答对了，更新统计数据
+                existingResult.userAnswer = userAnswer;
+                existingResult.isCorrect = isCorrect;
+                existingResult.timestamp = new Date().toISOString();
+                userData.learningProgress.correctAnswers++;
+            }
+            
+            // 更新正确率
+            userData.learningProgress.accuracy = userData.learningProgress.totalQuizzes > 0 ? 
+                userData.learningProgress.correctAnswers / userData.learningProgress.totalQuizzes : 0;
+            
+            // 保存用户数据
+            saveUserData();
+            
+            // 检查成就
+            checkAchievements();
+        }
+
+        // 显示答题结果
+        function showQuizResult() {
+            // 隐藏答题区域，显示结果区域
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            
+            // 计算得分
+            const totalQuestions = quizState.currentQuestions.length;
+            const correctAnswers = quizState.score;
+            const wrongAnswers = totalQuestions - correctAnswers;
+            const accuracy = totalQuestions > 0 ? Math.round(correctAnswers / totalQuestions * 100) : 0;
+            
+            // 更新结果
+            document.getElementById('result-score').textContent = `${correctAnswers}/${totalQuestions}`;
+            document.getElementById('result-score-bar').style.width = `${accuracy}%`;
+            document.getElementById('result-total').textContent = totalQuestions;
+            document.getElementById('result-correct').textContent = correctAnswers;
+            document.getElementById('result-wrong').textContent = wrongAnswers;
+            document.getElementById('result-accuracy').textContent = `${accuracy}%`;
+            
+            // 更新分析
+            let analysis = '';
+            if (accuracy >= 90) {
+                analysis = '太棒了！你对福建春节民俗文化有非常深入的了解，继续保持！';
+            } else if (accuracy >= 70) {
+                analysis = '做得很好！你对福建春节民俗文化有不错的了解，再接再厉！';
+            } else if (accuracy >= 50) {
+                analysis = '还不错！你对福建春节民俗文化有一定的了解，但还有提升空间。';
+            } else {
+                analysis = '继续努力！建议你多学习福建春节民俗文化知识，提高答题正确率。';
+            }
+            
+            document.getElementById('result-analysis').textContent = analysis;
+        }
+
+        // 初始化成就系统
+        function initAchievementSystem() {
+            // 成就提示关闭按钮
+            document.getElementById('achievement-toast-close').addEventListener('click', function() {
+                hideAchievementToast();
+            });
+        }
+
+        // 更新成就显示
+        function updateAchievementsDisplay() {
+            // 更新进度
+            updateProgressDisplay();
+            
+            // 更新成就徽章
+            updateAchievementBadges();
+            
+            // 更新最近活动
+            updateRecentActivities();
+        }
+
+        // 更新进度显示
+        function updateProgressDisplay() {
+            // 知识学习进度
+            const totalCultures = folkCultureData.length;
+            const learnedCultures = userData.completedCultures.length;
+            const cultureProgress = totalCultures > 0 ? Math.round(learnedCultures / totalCultures * 100) : 0;
+            
+            document.getElementById('progress-culture-text').textContent = `${learnedCultures}/${totalCultures}`;
+            document.getElementById('progress-culture-bar').style.width = `${cultureProgress}%`;
+            
+            // 答题进度
+            const totalQuizCount = quizData.length;
+            const answeredQuizzes = userData.quizResults.length;
+            const quizProgress = totalQuizCount > 0 ? Math.round(answeredQuizzes / totalQuizCount * 100) : 0;
+            
+            document.getElementById('progress-quiz-text').textContent = `${answeredQuizzes}/${totalQuizCount}`;
+            document.getElementById('progress-quiz-bar').style.width = `${quizProgress}%`;
+            
+            // 更新图表
+            updateProgressChart();
+        }
+
+        // 更新进度图表
+        function updateProgressChart() {
+            const ctx = document.getElementById('progress-chart').getContext('2d');
+            
+            // 按地区统计学习进度
+            const regions = ['fuzhou', 'minnan', 'minxi', 'putian', 'ningde', 'all'];
+            const regionData = regions.map(region => {
+                const regionCultures = folkCultureData.filter(c => c.region === region || (region === 'all' && c.region === 'all'));
+                const learnedRegionCultures = regionCultures.filter(c => userData.completedCultures.includes(c.id));
+                return {
+                    name: getRegionName(region),
+                    total: regionCultures.length,
+                    learned: learnedRegionCultures.length
+                };
+            }).filter(r => r.total > 0);
+            
+            // 按分类统计学习进度
+            const categories = ['ritual', 'food', 'activity', 'art'];
+            const categoryData = categories.map(category => {
+                const categoryCultures = folkCultureData.filter(c => c.category === category);
+                const learnedCategoryCultures = categoryCultures.filter(c => userData.completedCultures.includes(c.id));
+                return {
+                    name: getCategoryName(category),
+                    total: categoryCultures.length,
+                    learned: learnedCategoryCultures.length
+                };
+            }).filter(c => c.total > 0);
+            
+            // 销毁旧图表
+            if (window.progressChart) {
+                window.progressChart.destroy();
+            }
+            
+            // 创建新图表
+            window.progressChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [...regionData.map(r => r.name), ...categoryData.map(c => c.name)],
+                    datasets: [{
+                        label: '已学习',
+                        data: [...regionData.map(r => r.learned), ...categoryData.map(c => c.learned)],
+                        backgroundColor: '#D32F2F',
+                        borderColor: '#B71C1C',
+                        borderWidth: 1
+                    }, {
+                        label: '未学习',
+                        data: [...regionData.map(r => r.total - r.learned), ...categoryData.map(c => c.total - c.learned)],
+                        backgroundColor: '#E0E0E0',
+                        borderColor: '#BDBDBD',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: true,
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: '学习进度统计'
+                        }
+                    }
+                }
+            });
+        }
+
+        // 更新成就徽章
+        function updateAchievementBadges() {
+            const badgesContainer = document.getElementById('achievement-badges');
+            badgesContainer.innerHTML = '';
+            
+            achievements.forEach(achievement => {
+                const isUnlocked = userData.achievements.includes(achievement.id);
+                
+                const badge = document.createElement('div');
+                badge.className = `bg-white rounded-lg shadow p-4 text-center ${isUnlocked ? 'border-2 border-secondary' : 'border border-neutral-200 opacity-50'}`;
+                badge.innerHTML = `
+                    <div class="w-16 h-16 mx-auto mb-3 rounded-full ${isUnlocked ? 'bg-secondary text-neutral-900' : 'bg-neutral-200 text-neutral-400'} flex items-center justify-center">
+                        <i class="fa ${achievement.icon} text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-neutral-800 mb-1">${achievement.title}</h4>
+                    <p class="text-xs text-neutral-600">${achievement.description}</p>
+                `;
+                
+                badgesContainer.appendChild(badge);
+            });
+        }
+
+        // 更新最近活动
+        function updateRecentActivities() {
+            const activitiesContainer = document.getElementById('recent-activities');
+            activitiesContainer.innerHTML = '';
+            
+            // 合并学习和答题记录
+            const activities = [
+                ...userData.completedCultures.map(id => {
+                    const culture = folkCultureData.find(c => c.id === id);
+                    return {
+                        type: 'learn',
+                        title: culture ? `学习了"${culture.title}"` : '学习了一个知识点',
+                        timestamp: new Date().toISOString() // 简化处理，实际应该记录时间
+                    };
+                }),
+                ...userData.quizResults.map(result => {
+                    const quiz = quizData.find(q => q.id === result.quizId);
+                    return {
+                        type: 'quiz',
+                        title: quiz ? `回答了问题"${quiz.question.substring(0, 20)}..."` : '回答了一个问题',
+                        success: result.isCorrect,
+                        timestamp: result.timestamp
+                    };
+                }),
+                ...userData.achievements.map(id => {
+                    const achievement = achievements.find(a => a.id === id);
+                    return {
+                        type: 'achievement',
+                        title: achievement ? `解锁了成就"${achievement.title}"` : '解锁了一个成就',
+                        timestamp: new Date().toISOString() // 简化处理，实际应该记录时间
+                    };
+                })
+            ];
+            
+            // 按时间排序
+            activities.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            // 显示最近10条活动
+            const recentActivities = activities.slice(0, 10);
+            
+            if (recentActivities.length === 0) {
+                activitiesContainer.innerHTML = `
+                    <div class="text-center py-4 text-neutral-500">
+                        <i class="fa fa-history text-2xl mb-2"></i>
+                        <p>暂无活动记录</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            recentActivities.forEach(activity => {
+                const activityDiv = document.createElement('div');
+                activityDiv.className = 'flex items-start p-3 border-b border-neutral-100';
+                
+                let iconClass = 'fa-circle-o text-neutral-400';
+                if (activity.type === 'learn') {
+                    iconClass = 'fa-book text-primary';
+                } else if (activity.type === 'quiz') {
+                    iconClass = activity.success ? 'fa-check-circle text-success' : 'fa-times-circle text-primary';
+                } else if (activity.type === 'achievement') {
+                    iconClass = 'fa-trophy text-secondary';
+                }
+                
+                activityDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center mr-3 flex-shrink-0">
+                        <i class="fa ${iconClass}"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-neutral-800">${activity.title}</p>
+                        <p class="text-xs text-neutral-500">${formatDate(activity.timestamp)}</p>
+                    </div>
+                `;
+                
+                activitiesContainer.appendChild(activityDiv);
+            });
+        }
+
+        // 检查成就
+        function checkAchievements() {
+            achievements.forEach(achievement => {
+                // 如果已经解锁，跳过
+                if (userData.achievements.includes(achievement.id)) {
+                    return;
+                }
+                
+                let unlocked = false;
+                
+                // 根据成就类型检查
+                if (achievement.requirement.type === 'learn_cultures') {
+                    // 学习指定数量的文化
+                    unlocked = userData.completedCultures.length >= achievement.requirement.count;
+                } else if (achievement.requirement.type === 'quiz_accuracy') {
+                    // 答题正确率达到指定百分比
+                    const accuracy = userData.learningProgress.accuracy * 100;
+                    unlocked = accuracy >= achievement.requirement.percentage && userData.learningProgress.totalQuizzes >= 5;
+                } else if (achievement.requirement.type === 'learn_region') {
+                    // 学习指定地区的所有文化
+                    const regionCultures = folkCultureData.filter(c => c.region === achievement.requirement.region || c.region === 'all');
+                    const learnedRegionCultures = regionCultures.filter(c => userData.completedCultures.includes(c.id));
+                    unlocked = regionCultures.length > 0 && learnedRegionCultures.length === regionCultures.length;
+                } else if (achievement.requirement.type === 'learn_all_cultures') {
+                    // 学习所有文化
+                    unlocked = userData.completedCultures.length === folkCultureData.length && folkCultureData.length > 0;
+                } else if (achievement.requirement.type === 'complete_all_quizzes') {
+                    // 完成所有答题
+                    unlocked = userData.quizResults.length === quizData.length && quizData.length > 0;
+                } else if (achievement.requirement.type === 'learn_category') {
+                    // 学习指定分类的所有文化
+                    const categoryCultures = folkCultureData.filter(c => c.category === achievement.requirement.category);
+                    const learnedCategoryCultures = categoryCultures.filter(c => userData.completedCultures.includes(c.id));
+                    unlocked = categoryCultures.length > 0 && learnedCategoryCultures.length === categoryCultures.length;
+                }
+                
+                // 如果解锁了成就
+                if (unlocked) {
+                    userData.achievements.push(achievement.id);
+                    saveUserData();
+                    showAchievementToast(achievement.title);
+                }
+            });
+        }
+
+        // 显示成就提示
+        function showAchievementToast(achievementName) {
+            const toast = document.getElementById('achievement-toast');
+            document.getElementById('achievement-toast-name').textContent = achievementName;
+            
+            toast.classList.remove('translate-y-full', 'opacity-0');
+            
+            // 3秒后自动隐藏
+            setTimeout(() => {
+                hideAchievementToast();
+            }, 3000);
+        }
+
+        // 隐藏成就提示
+        function hideAchievementToast() {
+            const toast = document.getElementById('achievement-toast');
+            toast.classList.add('translate-y-full', 'opacity-0');
+        }
+
+        // 初始化统计数据
+        function initStatistics() {
+            // 更新统计数字
+            document.getElementById('stats-cultures').textContent = folkCultureData.length;
+            document.getElementById('stats-quizzes').textContent = quizData.length;
+            document.getElementById('stats-users').textContent = Math.floor(Math.random() * 1000) + 1000; // 模拟用户数
+            document.getElementById('stats-achievements').textContent = achievements.length;
+            
+            // 数字动画效果
+            animateNumbers();
+        }
+
+        // 数字动画效果
+        function animateNumbers() {
+            const statsElements = [
+                { id: 'stats-cultures', target: folkCultureData.length },
+                { id: 'stats-quizzes', target: quizData.length },
+                { id: 'stats-users', target: Math.floor(Math.random() * 1000) + 1000 },
+                { id: 'stats-achievements', target: achievements.length }
+            ];
+            
+            statsElements.forEach(element => {
+                const el = document.getElementById(element.id);
+                const target = element.target;
+                const duration = 2000; // 动画持续时间（毫秒）
+                const startTime = performance.now();
+                const startValue = 0;
+                
+                function updateNumber(currentTime) {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / duration, 1);
+                    
+                    // 使用缓动函数
+                    const easeOutQuad = t => t * (2 - t);
+                    const currentValue = Math.floor(startValue + (target - startValue) * easeOutQuad(progress));
+                    
+                    el.textContent = currentValue;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateNumber);
+                    }
+                }
+                
+                requestAnimationFrame(updateNumber);
+            });
+        }
+
+        // 初始化轮播
+        function initTestimonialSlider() {
+            const track = document.getElementById('testimonial-track');
+            const items = document.querySelectorAll('.testimonial-item');
+            const prevBtn = document.querySelector('.testimonial-prev');
+            const nextBtn = document.querySelector('.testimonial-next');
+            
+            let currentIndex = 0;
+            const itemWidth = items[0].offsetWidth;
+            const itemsPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+            const maxIndex = items.length - itemsPerView;
+            
+            // 更新轮播位置
+            function updateSlider() {
+                track.style.transform = `translateX(-${currentIndex * (itemWidth + 32)}px)`; // 32是px-4的两倍
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex >= maxIndex;
+            }
+            
+            // 上一张
+            prevBtn.addEventListener('click', function() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+            
+            // 下一张
+            nextBtn.addEventListener('click', function() {
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+            
+            // 窗口大小改变时重新计算
+            window.addEventListener('resize', function() {
+                const newItemsPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+                if (newItemsPerView !== itemsPerView) {
+                    currentIndex = 0;
+                    updateSlider();
+                }
+            });
+            
+            // 自动轮播
+            setInterval(function() {
+                currentIndex = (currentIndex + 1) % (maxIndex + 1);
+                updateSlider();
+            }, 5000);
+            
+            // 初始化
+            updateSlider();
+        }
+
+        // 辅助函数：获取随机题目
+        function getRandomQuestions(count) {
+            const shuffled = [...quizData].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        // 辅助函数：获取分类颜色类
+        function getCategoryColorClass(category) {
+            switch (category) {
+                case 'ritual':
+                    return 'bg-yellow-100 text-yellow-800';
+                case 'food':
+                    return 'bg-green-100 text-green-800';
+                case 'activity':
+                    return 'bg-blue-100 text-blue-800';
+                case 'art':
+                    return 'bg-purple-100 text-purple-800';
+                default:
+                    return 'bg-neutral-100 text-neutral-800';
+            }
+        }
+
+        // 辅助函数：获取分类名称
+        function getCategoryName(category) {
+            switch (category) {
+                case 'ritual':
+                    return '祭祀习俗';
+                case 'food':
+                    return '饮食文化';
+                case 'activity':
+                    return '民俗活动';
+                case 'art':
+                    return '民间艺术';
+                default:
+                    return '其他';
+            }
+        }
+
+        // 辅助函数：获取地区颜色类
+        function getRegionColorClass(region) {
+            switch (region) {
+                case 'fuzhou':
+                    return 'bg-red-100 text-red-800';
+                case 'minnan':
+                    return 'bg-blue-100 text-blue-800';
+                case 'minxi':
+                    return 'bg-green-100 text-green-800';
+                case 'putian':
+                    return 'bg-purple-100 text-purple-800';
+                case 'ningde':
+                    return 'bg-yellow-100 text-yellow-800';
+                case 'all':
+                    return 'bg-neutral-100 text-neutral-800';
+                default:
+                    return 'bg-neutral-100 text-neutral-800';
+            }
+        }
+
+        // 辅助函数：获取地区名称
+        function getRegionName(region) {
+            switch (region) {
+                case 'fuzhou':
+                    return '福州';
+                case 'minnan':
+                    return '闽南';
+                case 'minxi':
+                    return '闽西';
+                case 'putian':
+                    return '莆田';
+                case 'ningde':
+                    return '宁德';
+                case 'all':
+                    return '全福建';
+                default:
+                    return '其他';
+            }
+        }
+
+        // 辅助函数：格式化日期
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return `${date.getFullYear()}-${padZero(date.getMonth() + 1)}-${padZero(date.getDate())} ${padZero(date.getHours())}:${padZero(date.getMinutes())}`;
+        }
+
+        // 辅助函数：数字补零
+        function padZero(num) {
+            return num < 10 ? `0${num}` : num;
+        }
+
+        // 辅助函数：保存用户数据
+        function saveUserData() {
+            localStorage.setItem('fujian_folk_culture_user_data', JSON.stringify(userData));
+        }
+
+        // 辅助函数：加载用户数据
+        function loadUserData() {
+            const savedData = localStorage.getItem('fujian_folk_culture_user_data');
+            if (savedData) {
+                userData = JSON.parse(savedData);
+            }
+        }
+    </script>
+</body>
+</html>
