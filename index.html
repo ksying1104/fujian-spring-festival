@@ -332,8 +332,57 @@
                         <i class="fa fa-chevron-right text-primary"></i>
                     </button>
                 </div>
+                
+                <!-- 提交评价按钮 -->
+                <div class="text-center mt-8">
+                    <button id="submit-testimonial-btn" class="bg-primary hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        <i class="fa fa-comment mr-2"></i> 提交评价
+                    </button>
+                </div>
             </div>
         </section>
+        
+        <!-- 评价提交模态框 -->
+        <div id="testimonial-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+            <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 scale-95 opacity-0" id="testimonial-modal-content">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold font-serif text-neutral-800">提交评价</h3>
+                    <button id="close-testimonial-modal" class="text-neutral-500 hover:text-neutral-800 focus:outline-none">
+                        <i class="fa fa-times text-xl"></i>
+                    </button>
+                </div>
+                <form id="testimonial-form">
+                    <div class="mb-4">
+                        <label class="block text-neutral-700 mb-2">评分</label>
+                        <div class="flex text-2xl text-neutral-300" id="star-rating">
+                            <i class="fa fa-star cursor-pointer hover:text-secondary" data-rating="1"></i>
+                            <i class="fa fa-star cursor-pointer hover:text-secondary" data-rating="2"></i>
+                            <i class="fa fa-star cursor-pointer hover:text-secondary" data-rating="3"></i>
+                            <i class="fa fa-star cursor-pointer hover:text-secondary" data-rating="4"></i>
+                            <i class="fa fa-star cursor-pointer hover:text-secondary" data-rating="5"></i>
+                        </div>
+                        <input type="hidden" id="rating" name="rating" value="5">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-neutral-700 mb-2">评价内容</label>
+                        <textarea id="testimonial-content" name="content" rows="4" placeholder="请分享你对福建春节民俗文化的体验和感受..." class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <label class="block text-neutral-700 mb-2">姓名</label>
+                            <input type="text" id="testimonial-name" name="name" placeholder="请输入您的姓名" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label class="block text-neutral-700 mb-2">职业</label>
+                            <input type="text" id="testimonial-job" name="job" placeholder="请输入您的职业" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-primary hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
+                        提交评价
+                    </button>
+                </form>
+            </div>
+        </div>
 
         <!-- 知识库页面 -->
         <section id="knowledge" class="page-section hidden">
@@ -1483,6 +1532,9 @@
             // 初始化轮播
             initTestimonialSlider();
             
+            // 初始化评价系统
+            initTestimonialSystem();
+            
             // 初始化分享按钮
             initShareButtons();
         });
@@ -2628,22 +2680,206 @@
 
         // 初始化统计数据
         function initStatistics() {
+            // 获取并更新参与用户数
+            let userCount = localStorage.getItem('userCount');
+            if (!userCount) {
+                userCount = 13580; // 初始值
+            } else {
+                userCount = parseInt(userCount) + 1; // 每次访问增加1
+            }
+            localStorage.setItem('userCount', userCount);
+            
             // 更新统计数字
             document.getElementById('stats-cultures').textContent = folkCultureData.length;
             document.getElementById('stats-quizzes').textContent = quizData.length;
-            document.getElementById('stats-users').textContent = Math.floor(Math.random() * 1000) + 1000; // 模拟用户数
+            document.getElementById('stats-users').textContent = userCount;
             document.getElementById('stats-achievements').textContent = achievements.length;
             
             // 数字动画效果
-            animateNumbers();
+            animateNumbers(userCount);
         }
 
         // 数字动画效果
-        function animateNumbers() {
+        function animateNumbers(userCount) {
             const statsElements = [
                 { id: 'stats-cultures', target: folkCultureData.length },
                 { id: 'stats-quizzes', target: quizData.length },
-                { id: 'stats-users', target: Math.floor(Math.random() * 1000) + 1000 },
+                { id: 'stats-users', target: userCount },
+                { id: 'stats-achievements', target: achievements.length }
+            ];
+        }
+        
+        // 初始化评价功能
+        function initTestimonialSystem() {
+            // 获取DOM元素
+            const submitTestimonialBtn = document.getElementById('submit-testimonial-btn');
+            const testimonialModal = document.getElementById('testimonial-modal');
+            const testimonialModalContent = document.getElementById('testimonial-modal-content');
+            const closeTestimonialModal = document.getElementById('close-testimonial-modal');
+            const testimonialForm = document.getElementById('testimonial-form');
+            const starRating = document.getElementById('star-rating');
+            const ratingInput = document.getElementById('rating');
+            
+            // 显示模态框
+            submitTestimonialBtn.addEventListener('click', () => {
+                testimonialModal.classList.remove('hidden');
+                setTimeout(() => {
+                    testimonialModalContent.classList.remove('scale-95', 'opacity-0');
+                    testimonialModalContent.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            });
+            
+            // 关闭模态框
+            closeTestimonialModal.addEventListener('click', () => {
+                testimonialModalContent.classList.remove('scale-100', 'opacity-100');
+                testimonialModalContent.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    testimonialModal.classList.add('hidden');
+                }, 300);
+            });
+            
+            // 点击模态框外部关闭
+            testimonialModal.addEventListener('click', (e) => {
+                if (e.target === testimonialModal) {
+                    closeTestimonialModal.click();
+                }
+            });
+            
+            // 星级评分交互
+            starRating.addEventListener('click', (e) => {
+                if (e.target.classList.contains('fa-star')) {
+                    const rating = parseInt(e.target.getAttribute('data-rating'));
+                    ratingInput.value = rating;
+                    
+                    // 更新星星显示
+                    const stars = starRating.querySelectorAll('.fa-star');
+                    stars.forEach((star, index) => {
+                        if (index < rating) {
+                            star.classList.add('text-secondary');
+                            star.classList.remove('text-neutral-300');
+                        } else {
+                            star.classList.remove('text-secondary');
+                            star.classList.add('text-neutral-300');
+                        }
+                    });
+                }
+            });
+            
+            // 表单提交
+            testimonialForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // 获取表单数据
+                const rating = parseInt(ratingInput.value);
+                const content = document.getElementById('testimonial-content').value;
+                const name = document.getElementById('testimonial-name').value;
+                const job = document.getElementById('testimonial-job').value;
+                
+                // 验证表单
+                if (!content || !name || !job) {
+                    alert('请填写完整的评价信息');
+                    return;
+                }
+                
+                // 创建评价对象
+                const testimonial = {
+                    id: 'testimonial_' + Date.now(),
+                    rating: rating,
+                    content: content,
+                    name: name,
+                    job: job,
+                    timestamp: Date.now()
+                };
+                
+                // 保存评价到localStorage
+                let testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+                testimonials.unshift(testimonial); // 添加到开头
+                localStorage.setItem('testimonials', JSON.stringify(testimonials));
+                
+                // 添加新评价到轮播
+                addTestimonialToSlider(testimonial);
+                
+                // 关闭模态框并重置表单
+                closeTestimonialModal.click();
+                testimonialForm.reset();
+                
+                // 重置星星评分
+                const stars = starRating.querySelectorAll('.fa-star');
+                stars.forEach((star, index) => {
+                    if (index < 5) {
+                        star.classList.add('text-secondary');
+                        star.classList.remove('text-neutral-300');
+                    } else {
+                        star.classList.remove('text-secondary');
+                        star.classList.add('text-neutral-300');
+                    }
+                });
+                ratingInput.value = 5;
+                
+                // 显示成功提示
+                alert('评价提交成功！感谢您的反馈。');
+            });
+            
+            // 加载现有评价
+            loadTestimonials();
+        }
+        
+        // 加载评价
+        function loadTestimonials() {
+            let testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+            testimonials.forEach(testimonial => {
+                addTestimonialToSlider(testimonial);
+            });
+        }
+        
+        // 添加评价到轮播
+        function addTestimonialToSlider(testimonial) {
+            const testimonialTrack = document.getElementById('testimonial-track');
+            
+            // 创建评价元素
+            const testimonialItem = document.createElement('div');
+            testimonialItem.className = 'testimonial-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4';
+            
+            // 生成星星HTML
+            let starsHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= testimonial.rating) {
+                    starsHTML += '<i class="fa fa-star"></i>';
+                } else {
+                    starsHTML += '<i class="fa fa-star-o"></i>';
+                }
+            }
+            
+            testimonialItem.innerHTML = `
+                <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                    <div class="flex items-center mb-4">
+                        <div class="text-secondary">
+                            ${starsHTML}
+                        </div>
+                    </div>
+                    <p class="text-neutral-700 mb-4">"${testimonial.content}"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-neutral-300 flex items-center justify-center">
+                            <i class="fa fa-user text-neutral-600"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h5 class="font-bold text-neutral-800">${testimonial.name}</h5>
+                            <p class="text-sm text-neutral-500">${testimonial.job}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // 添加到轮播
+            testimonialTrack.appendChild(testimonialItem);
+        }
+        
+        // 数字动画效果
+        function animateNumbers(userCount) {
+            const statsElements = [
+                { id: 'stats-cultures', target: folkCultureData.length },
+                { id: 'stats-quizzes', target: quizData.length },
+                { id: 'stats-users', target: userCount },
                 { id: 'stats-achievements', target: achievements.length }
             ];
             
